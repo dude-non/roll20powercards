@@ -1,0 +1,75 @@
+!power {{
+  --name|Staff of Swarming Insects
+  --inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+	  --?? ?{Select Action|Giant Insect - 4 charges,GiantInsect|Insect Plague - 5 charges,InsectPlague|Insect Plague - Susquent Damage,InsectPlagueReRoll|Insect Cloud - 1 charge,InsectCloud|Recharge,Recharge} == GiantInsect ?? skipTo*1|GiantInsect
+	  --?? ?{Select Action|Giant Insect - 4 charges,GiantInsect|Insect Plague - 5 charges,InsectPlague|Insect Plague - Susquent Damage,InsectPlagueReRoll|Insect Cloud - 1 charge,InsectCloud|Recharge,Recharge} == InsectPlague ?? skipTo*2|InsectPlague
+    --?? ?{Select Action|Giant Insect - 4 charges,GiantInsect|Insect Plague - 5 charges,InsectPlague|Insect Plague - Susquent Damage,InsectPlagueReRoll|Insect Cloud - 1 charge,InsectCloud|Recharge,Recharge} == InsectPlagueReRoll ?? skipTo*3|InsectPlagueReRoll
+    --?? ?{Select Action|Giant Insect - 4 charges,GiantInsect|Insect Plague - 5 charges,InsectPlague|Insect Plague - Susquent Damage,InsectPlagueReRoll|Insect Cloud - 1 charge,InsectCloud|Recharge,Recharge} == InsectCloud ?? skipTo*4|InsectCloud
+    --?? ?{Select Action|Giant Insect - 4 charges,GiantInsect|Insect Plague - 5 charges,InsectPlague|Insect Plague - Susquent Damage,InsectPlagueReRoll|Insect Cloud - 1 charge,InsectCloud|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+
+  --:GiantInsect|
+  --?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*6|NotEnoughCharges
+  --Spell Cast| Giant Insect
+  --Effect| You transform up to ten centipedes, three spiders, five wasps, or one scorpion within range into giant versions of their natural forms for the duration. A centipede becomes a giant centipede, a spider becomes a giant spider, a wasp becomes a giant wasp, and a scorpion becomes a giant scorpion.
+  --Range| 30 ft.
+  --Charges Spent| 4
+  --Note| Each creature obeys your verbal commands, and in combat, they act on your turn each round. The GM has the statistics for these creatures and resolves their actions and movement.
+  --Note *2| A creature remains in its giant size for the duration, until it drops to 0 hit points, or until you use an action to dismiss the effect on it.
+  --Note *3| The GM might allow you to choose different targets. For example, if you transform a bee, its giant version might have the same statistics as a giant wasp.
+  --api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  --?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*7|DestructionCheck
+  --skipTo*8|EndOfCard
+
+  --:InsectPlague|
+  --?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*9|NotEnoughCharges
+  --Spell Cast *2| Insect Plague
+  --Effect *2| Swarming, biting locusts fill a 20-foot-radius sphere centered on a point you choose within range. The sphere spreads around corners. The sphere remains for the duration, and its area is lightly obscured. The sphere's area is difficult terrain.
+  --Effect *3| When the area appears, each creature in it must make a Constitution saving throw. A creature takes 4d10 piercing damage on a failed save, or half as much damage on a successful one. A creature must also make this saving throw when it enters the spell's area for the first time on a turn or ends its turn there.
+  --Duration *2| Concentration, up to 10 minutes
+  --Range *2| 300 ft.
+  --Saving Throw| @{spell_save_dc} Con Save
+  --Failed Save| [[ [$Damage] 4d8 ]] Piercing Damage
+  --Successful Save| [^Damage.halftotal] Piercing Damage
+  --Charges Spent *2| 5
+  --api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+  --?? ~ChargesOnCharacterSheet$ == 5 ?? skipTo*10|DestructionCheck
+  --skipTo*11|EndOfCard 
+
+  --:InsectPlagueReRoll|
+  --Ability Used| Insect Plague - Subsequent Damage
+  --Saving Throw *2| @{spell_save_dc} Con Save
+  --Failed Save *2| [[ [$Damage] 4d8 ]] Piercing Damage
+  --Successful Save *2| [^Damage.halftotal] Piercing Damage
+  --Note *4| This damage is only dealt when a creature enters the Insect Plague for the first time or ends its turn there.
+  --skipTo *12|EndOfCard
+
+  --:InsectCloud|
+  --:?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*13|NotEnoughCharges
+  --Ability Used *2| Insect Cloud
+  --Effect *4| While holding the staff, you can use an action and expend 1 charge to cause a swarm of harmless flying insects to spread out in a 30-foot radius from you. The insects remain for 10 minutes, making the area heavily obscured for creatures other than you. The swarm moves with you, remaining centered on you. A wind of at least 10 miles per hour disperses the swarm and ends the effect.
+  --Duration *3| 10 minutes
+  --Range *3| Self
+  --Charges Spent *4| 1
+  --api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+  --?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*14|DestructionCheck
+  --skipTo*15|EndOfCard 
+  
+  --:Recharge|
+  --Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6+4 + @{repeating_resource_$0_resource_right}]] 
+  --?? $RegainedCharges >= 10 ?? api_setattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|10
+  --?? $RegainedCharges < 10 ?? api_setattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  --Note *5|The Recharge Formula above is calculated by rolling 1d6+4, and then adding the number of charges the staff currently has (if any). The Staff can hold a maximum of 10 charges. If the total number of charges exceeds 10, then the number of charges will be set to 10.
+  --skipTo*16|EndOfCard
+  
+  --:NotEnoughCharges|
+  --Failure|Not enough charges for this option
+  --skipTo*17|EndOfCard
+  
+  --:DestructionCheck|
+  --Warning|All charges used
+  --Destruction Check| [[ [$Dest] 1d20]]
+  --?? $Dest > 1 ?? Safe|The staff is out of charges, but undamaged.
+  --?? $Dest == 1 ?? Destroyed|The staff turns into a Swarm of Insects and is destroyed!
+  
+  --:EndOfCard|
+}}

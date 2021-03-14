@@ -1,0 +1,92 @@
+!power {{
+	--name|Wild Surge
+	--inlinereplace|ChargesOnCharacterSheet|@{class_resource}
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == RollRage ?? skipTo*1|RollRage
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABOne ?? skipTo*2|ABOne
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABTwo ?? skipTo*3|ABTwo
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABThree ?? skipTo*4|ABThree
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABFour ?? skipTo*5|ABFour
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABFive ?? skipTo*6|ABFive
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABSix ?? skipTo*7|ABSix
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABSeven ?? skipTo*8|ABSeven
+			--?? ?{Select Action|Roll Rage,ABEight|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == ABEight ?? skipTo*9|ABEight
+			--?? ?{Select Action|Roll Rage,RollRage|Ability 1,ABOne|Ability 2,ABTwo|Ability 3,ABThree|Ability 4,ABFour|Ability 5,ABFive|Ability 6,ABSix|Ability 7,ABSeven|Ability 8,ABEight|Recharge,Recharge} == Recharge ?? skipTo*10|Recharge
+
+	--:RollRage|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*11|NotEnoughCharges
+	--api_modattr *1|_silent _charid @{character_id} _class_resource|-1
+	--Ability Rolled| [[ [$RageRoll] 1d8 ]]
+	--?? $RageRoll == 1 ?? skipTo*12|ABOne
+	--?? $RageRoll == 2 ?? skipTo*13|ABTwo
+	--?? $RageRoll == 3 ?? skipTo*14|ABThree
+	--?? $RageRoll == 4 ?? skipTo*15|ABFour
+	--?? $RageRoll == 5 ?? skipTo*16|ABFive
+	--?? $RageRoll == 6 ?? skipTo*17|ABSix
+	--?? $RageRoll == 7 ?? skipTo*18|ABSeven
+	--?? $RageRoll == 8 ?? skipTo*19|ABEight
+	--Warning|Roll Failed
+	--skipTo*20|EndOfCard
+
+	--:ABOne|
+	--Ability *1| Necrotic Surge
+	--Effect *1| Creature around you are hit with Necrotic Energies, sapping their life and feeding your own.
+	--Saving Throw *1| [[ 8 + @{pb} + @{constitution_mod}]] Con Save
+	--Failed Save *1| [[ 1d12 ]] Necrotic Damage
+	--Healing *1| [[ 1d12 ]] Temp Hit Points
+	--skipTo*21|EndOFCard
+
+	--:ABTwo|
+	--Ability *2| Temporal Surge
+	--Effect *2| You Teleport to an unoccupied space you can see, and until your rage ends you can use this effect again as a Bonus Action.
+	--Range *2| 30 ft.
+	--skipTo*22|EndOfCard
+
+	--:ABThree|
+	--Ability *3| Floaty Friend Go Boom
+	--Effect *3| An intangible spirit (Flumph or Pixie) appears within 5 ft. of a Creature of your choice. At the end of the current Turn, the Spirit Explodes, and each Creature within 5 ft. of it must Save. Until your Rage ends, you can repeat this Summoning as a Bonus Action.
+	--Saving Throw *3| [[ 8 + @{pb} + @{constitution_mod}]] Dex Save
+	--Failed Save *3| [[ 1d6 ]] Force Damage
+	--skipTo*23|EndOfCard
+
+	--:ABFour| 
+	--Ability *4| Magical Infusion
+	--Effect *4| Magic Infuses 1 Weapon of your Choice that you are Holding. Until your Rage ends, the Weapon's Damage Type changes to Force and it gains the Light and Thrown Properties. If the Weapon leaves your hand, the Weapon reappears in your hand at the end of the current Turn.
+	--Range *4| 20/60 ft.
+	--skipTo*24|EndOfCard
+
+	--:ABFive|
+	--Ability *5| Retributive Surge
+	--Effect *5| Whenever a Creature hits you with an Attack Roll before your Rage ends, that creature takes Retaliatory Force Damage.
+	--Damage *5| [[ 1d6 ]] Force Damage
+	--skipTo*25|EndOfCard
+
+	--:ABSix|
+	--Ability *6| Protective Surge
+	--Effect *6| Until your Rage ends, you are surrounded by multicolored Protective lights; you and your Allies recieve a defensive bonus.
+	--Armor Class| +1
+	--Range| 10 ft. Aura
+	--skipTo*26|EndOfCard
+
+	--:ABSeven|
+	--Ability *7| Ivy Surge
+	--Effect *7| Flowers and Vines temporarily grow around you. Until your rage ends, this area is Difficult Terrain for your Enemies.
+	--Range *7| 15 ft. Aura
+	--skipTo*27|EndOfCard
+
+	--:ABEight|
+	--Ability *8| Chest Laser
+	--Effect *8| A bolt of light shoots from your chest. Another Creature of your Choice that you can see must save. Until your Rage ends, you can repeat this Effect as a Bonus Action.
+	--Saving Throw *8| [[ 8 + @{pb} + @{constitution_mod}]] Con Save
+	--Failed Save *8| [[ 1d6 ]] Radiant Damage and Blinded until the start of your next Turn.
+	--skipTo*28|EndOfCard
+
+	--:Recharge|
+	--Recharge *2| Your Rage count Recharges up to 3 Uses.
+	--api_setattr *2|_silent _charid @{character_id} _class_resource|3
+	--skipTo*29|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure| Not enough Anger to Rage.
+
+	--:EndOfCard|
+}}

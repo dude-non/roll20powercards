@@ -1,0 +1,91 @@
+!power {{
+  --name|Staff of Healing
+  --inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+	--?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == CureOne ?? skipTo*1|CureOne
+  --?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == CureTwo ?? skipTo*2|CureTwo
+  --?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == CureThree ?? skipTo*3|CureThree
+  --?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == CureFour ?? skipTo*4|CureFour
+  --?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == LRestoration ?? skipTo*5|LRestoration
+  --?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == MCWounds ?? skipTo*6|MCWounds
+  --?? ?{Select Action|Cure Wounds Lvl 1 - 1 charge,CureOne|Cure Wounds Lvl 2 - 2 charges,CureTwo|Cure Wounds Lvl 3 - 3 charges,CureThree|Cure Wounds Lvl 4 - 4 charges,CureFour|Lesser Restoration - 2 charges,LRestoration|Mass Cure Wounds - 5 charges,MCWounds|Recharge,Recharge} == Recharge ?? skipTo*7|Recharge
+	
+  --:CureOne|
+  --?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*8|NotEnoughCharges
+  --Spell Cast| Cure Wounds Lvl 1
+  --Healing| [[ 1d8 + @{spellcasting_ability} ]] Hit Points
+  --Charges Used *1| 1
+  --Note| This spell has no effect on Undead or Constructs.
+  --api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+  --?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*9|DestructionCheck
+  --skipTo*10|EndOfCard
+  
+  --:CureTwo|
+  --?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*11|NotEnoughCharges
+  --Spell Cast *2| Cure Wounds Lvl 2
+  --Healing *2| [[ 2d8 + @{spellcasting_ability} ]] Hit Points
+  --Charges Used *2| 2
+  --Note *2| This spell has no effect on Undead or Constructs.
+  --api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+  --?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*12|DestructionCheck
+  --skipTo*13|EndOfCard
+  
+  --:CureThree|
+  --?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*14|NotEnoughCharges
+  --Spell Cast *3| Cure Wounds Lvl 3
+  --Healing *3| [[ 3d8 + @{spellcasting_ability} ]] Hit Points
+  --Charges Used *3| 3
+  --Note *3| This spell has no effect on Undead or Constructs.
+  --api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
+  --?? ~ChargesOnCharacterSheet$ == 3 ?? skipTo*15|DestructionCheck
+  --skipTo*16|EndOfCard
+  
+  --:CureFour|
+  --?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*17|NotEnoughCharges
+  --Spell Cast *4| Cure Wounds Lvl 4
+  --Healing *4| [[ 4d8 + @{spellcasting_ability} ]] Hit Points
+  --Charges Used *4| 4
+  --Note *4| This spell has no effect on Undead or Constructs.
+  --api_modattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  --?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*18|DestructionCheck
+  --skipTo*19|EndOfCard
+
+  --:LRestoration|
+  --?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*20|NotEnoughCharges
+  --Spell Cast *5| Lesser Restoration
+  --Effect| You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned.  
+  --Charges Used *5| 2
+  --api_modattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+  --?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*21|DestructionCheck
+  --skipTo*22|EndOfCard
+
+  --:MCWounds|
+  --?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*23|NotEnoughCharges
+  --Spell Cast *6| Mass Cure Wounds
+  --Effect *2| A wave of healing energy washes out from a point of your choice within range.
+  --Healing *5| [[ 3d8 + @{spellcasting_ability} ]] Hit Points
+  --Range| 6 Creatures within a 30 ft. Radius Sphere
+  --Charges Used *6| 5
+  --Note *5| This spell has no effect on Undead or Constructs.
+  --api_modattr *6|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+  --?? ~ChargesOnCharacterSheet$ == 5 ?? skipTo*24|DestructionCheck
+  --skipTo*25|EndOfCard
+  
+  --:Recharge|
+  --Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6+4 + @{repeating_resource_$0_resource_right}]] 
+  --?? $RegainedCharges >= 10 ?? api_setattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|10
+  --?? $RegainedCharges < 10 ?? api_setattr *6|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  --Note *6|The Recharge Formula above is calculated by rolling 1d6+4, and then adding the number of charges the staff currently has (if any). The Staff can hold a maximum of 10 charges. If the total number of charges exceeds 10, then the number of charges will be set to 10.
+  --skipTo*26|EndOfCard
+  
+  --:NotEnoughCharges|
+  --Failure|Not enough charges for this option
+  --skipTo*27|EndOfCard
+  
+  --:DestructionCheck|
+  --Warning|All charges used
+  --Destruction Check| [[ [$Dest] 1d20]]
+  --?? $Dest > 1 ?? Safe|The staff is out of charges, but undamaged
+  --?? $Dest == 1 ?? Destroyed|The staff vanishes in a flash of light, lost forever!
+  
+  --:EndOfCard|
+}}

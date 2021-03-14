@@ -1,0 +1,60 @@
+!power {{
+	--name|Faelov's Inner Ki
+	--inlinereplace|ChargesOnCharacterSheet|@{class_resource}
+			--?? ?{Select Action|Flurry of Blows - 1 Ki,FoB|Patient Defense - 1 Ki,PD|Step of the Wind - 1 Ki,SotW|Defelect Missiles Retaliation - 1 Ki,DMR|Recharge,Recharge} == FoB ?? skipTo*1|FoB
+			--?? ?{Select Action|Flurry of Blows - 1 Ki,FoB|Patient Defense - 1 Ki,PD|Step of the Wind - 1 Ki,SotW|Defelect Missiles Retaliation - 1 Ki,DMR|Recharge,Recharge} == PD ?? skipTo*2|PD
+			--?? ?{Select Action|Flurry of Blows - 1 Ki,FoB|Patient Defense - 1 Ki,PD|Step of the Wind - 1 Ki,SotW|Defelect Missiles Retaliation - 1 Ki,DMR|Recharge,Recharge} == SotW ?? skipTo*3|SotW
+			--?? ?{Select Action|Flurry of Blows - 1 Ki,FoB|Patient Defense - 1 Ki,PD|Step of the Wind - 1 Ki,SotW|Defelect Missiles Retaliation - 1 Ki,DMR|Recharge,Recharge} == DMR ?? skipTo*4|DMR
+			--?? ?{Select Action|Flurry of Blows - 1 Ki,FoB|Patient Defense - 1 Ki,PD|Step of the Wind - 1 Ki,SotW|Defelect Missiles Retaliation - 1 Ki,DMR|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+
+	--:FoB|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*6|NotEnoughCharges
+	--Ability| Flurry of Blows
+	--Effect| Immediately after taking the Attack Action on your turn, you can make [[ 2 ]] Unarmed Strikes as a Bonus Action.
+	--First Attack| [[ 1d20 + @{dexterity_mod} + @{pb} ]]
+	--Second Attack| [[ 1d20 + @{dexterity_mod} + @{pb} ]]
+	--First Damage| [[ 1d4 + @{dexterity_mod} ]] Bludgeoning Damage
+	--Second Damage| [[ 1d4 + @{dexterity_mod} ]] Bludgeoning Damage
+	--Ki Spent| 1 point
+	--api_modattr *1|_silent _charid @{character_id} _class_resource|-1
+	--skipTo*7|EndOfCard
+
+	--:PD|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*8|NotEnoughCharges
+	--Ability *2| Patient Defense
+	--Effect *2| You can take the Dodge Action as a Bonus Action on your turn.
+	--Dodge| Until the start of your next turn, any Attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity Saving Throws with advantage. You lose this benefit if you are Incapacitated (as explained in Conditions ) or if your speed drops to 0.
+	--Ki Spent *2| 1 point
+	--api_modattr *2|_silent _charid @{character_id} _class_resource|-1
+	--skipTo*9|EndOfCard
+
+	--:SotW|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*10|NotEnoughCharges
+	--Ability *3| Step of the Wind
+	--Effect *3| You may take the Disengage or Dash Action as a Bonus Action on your turn and your Jump Distance is Doubled for This turn.
+	--Long Jump Distance| [[ @{strength} * 2 ]] ft.
+	--Short Jump Distance| [[ @{strength} ]] ft.
+	--Ki Spent *3| 1 point
+	--api_modattr *3|_silent _charid @{character_id} _class_resource|-1
+	--skipTo*11|EndOfCard
+
+	--:DMR|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*12|NotEnoughCharges
+	--Ability *4| Deflect Missiles - Retaliation
+	--Effect *4| If you negate all the Damage of an incoming Ranged Attack with Deflect Missiles, you may make a Ranged Monk Weapon Attack with the piece of Ammunition.
+	--Ranged Attack| [[ 1d20 + @{dexterity_mod} + @{pb} ]] 
+	--Damage| [[ 1d4 + @{dexterity_mod} ]] Damage of the Ammunition's Type
+	--Ki Spent *4| 1 point
+	--api_modattr *4|_silent _charid @{character_id} _class_resource|-1
+	--skipTo*13|EndOfCard
+
+	--:Recharge|
+	--Recharge *2| Your Ki Point count Recharges up to [[@{level}]] Uses.
+	--api_setattr *5|_silent _charid @{character_id} _class_resource|@{level}
+	--skipTo*29|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure| You do not have enough energy to use this option.
+	
+	--:EndOfCard|
+}}

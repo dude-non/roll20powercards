@@ -1,0 +1,77 @@
+!power {{
+  --name|Staff of Fire
+  --leftsub|You have resistance to fire damage 
+  --inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == BurningHands ?? skipTo*1|BurningHands
+	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Fireball ?? skipTo*2|Fireball
+	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFire ?? skipTo*3|WallOfFire
+     --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFireReRoll ?? skipTo*4|WallOfFireReRoll
+     --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+	
+  --:BurningHands|
+  --?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*6|NotEnoughCharges
+  --Spell Cast| Burning Hands
+  --Effect| As you hold your hands with thumbs touching and fingers spread, a thin sheet of flames shoots forth from your outstretched fingertips. 
+  --Saving Throw | @{spell_save_dc} Dex Save
+  --Failed Save | [[ [$Damage] 3d6 ]] Fire Damage 
+  --Successful Save| [^Damage.halftotal] Fire Damage
+  -_Range| 15 ft. Cone
+  --Charges Spent| 1
+  --Note *1| The fire ignites any flammable objects in the area that aren’t being worn or carried.
+  --api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+  --?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*7|DestructionCheck
+  --skipTo*8|EndOfCard
+
+  --:Fireball|
+  --?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*9|NotEnoughCharges
+  --Spell Cast *2| Fireball
+  --Effect *2| YA bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. 
+  --Saving Throw *2| @{spell_save_dc} Dex Save
+  --Failed Save *2| [[ [$Damage] 8d6 ]] Fire Damage 
+  --Successful Save *2| [^Damage.halftotal] Fire Damage
+  --Range *2| 150 ft.
+  --Size *2| 20 ft. Radius Sphere
+  --Charges Spent *2| 1
+  --Note *2| The fire spreads around corners. It ignites flammable objects in the area that aren’t being worn or carried.
+  --api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
+  --?? ~ChargesOnCharacterSheet$ == 3 ?? skipTo*10|DestructionCheck
+  --skipTo*11|EndOfCard 
+  
+  --:WallOfFire|
+  --?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*12|NotEnoughCharges
+  --Spell Cast *3| Wall of Ice
+  --Effect *3|You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration. When the wall appears, each creature within its area must make a Dexterity saving throw. 
+  --Duration *3|Concentration, up to 1 minute
+  --Saving Throw *3| @{spell_save_dc} Dex Save
+  --Failed Save *3| [[ [$WallOfIceCold] 5d8 ]] Fire Damage 
+  --Successful Save *3| [^WallOfIceCold.halftotal] Fire Damage 
+  --Charges Spent *3| 4
+  --Note *3|  One side of the wall, selected by you when you cast this spell, deals [[ 5d8 ]] fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage. 
+  --api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  --?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*13|DestructionCheck
+  --skipTo*14|EndOfCard  
+
+  --:WallOfFireReRoll|
+  --Damage| [[ 5d8 ]] Fire Damage
+  --Note *4| Only the side of the wall selected when the spell casts deals damage within 10 feet or inside the wall. The other side does not deal damage. This damage has no Saving Throw.
+  --skipTo*15|EndOfCard
+  
+  --:Recharge|
+  --Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6+4 + @{repeating_resource_$0_resource_right}]] 
+  --?? $RegainedCharges >= 10 ?? api_setattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|10
+  --?? $RegainedCharges < 10 ?? api_setattr *6|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  --Note *5|The Recharge Formula above is calculated by rolling 1d6+4, and then adding the number of charges the staff currently has (if any). The Staff can hold a maximum of 10 charges. If the total number of charges exceeds 10, then the number of charges will be set to 10.
+  --skipTo*16|EndOfCard
+  
+  --:NotEnoughCharges|
+  --Failure|Not enough charges for this option
+  --skipTo*17|EndOfCard
+  
+  --:DestructionCheck|
+  --Warning|All charges used
+  --Destruction Check| [[ [$Dest] 1d20]]
+  --?? $Dest > 1 ?? Safe|The staff is out of charges, but undamaged
+  --?? $Dest == 1 ?? Destroyed|The staff blackens, crumbles into cinders, and is destroyed!
+  
+  --:EndOfCard|
+}}

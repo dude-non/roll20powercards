@@ -1,0 +1,28 @@
+!power {{
+	--name|Eyes of Charming
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Charm Person - 1 charge,Charm|Recharge,Recharge} == Charm ?? skipTo*1|Charm
+			--?? ?{Select Action|Charm Person - 1 charge,Charm|Recharge,Recharge} == Recharge ?? skipTo*2|Recharge
+
+	--:Charm|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*3|NotEnoughCharges
+	--Spell Cast| Charm Person
+	--Initial Effect| You attempt to charm a humanoid you can see within range. 
+	--Saving Throw| [[ 13 ]] Wis Save
+	--Range| 30 ft.
+	--Duration| 1 hour
+	--Final Effect| It is charmed by you until the spell ends or until you or your companions do anything harmful to it. The charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was charmed by you.
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--skipTo*4|EndOfCard
+  
+	--:Recharge|
+	--api_setattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|3
+	--Note *6|The Eyes have been Recharged to hold its Maximum of [[ 3 ]] Charges.
+	--skipTo*5|EndOfCard
+	  
+	--:NotEnoughCharges|
+	--Failure|Not enough charges for this option
+
+	--:EndOfCard|	
+}}
+}}

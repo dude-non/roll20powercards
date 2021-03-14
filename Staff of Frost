@@ -1,0 +1,80 @@
+!power {{
+  --name|Staff of Frost
+  --leftsub|You have resistance to cold damage 
+  --inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+	--?? ?{Select Action|Cone Of Cold - 5 charges,ConeOfCold|Fog Cloud - 1 charge,FogCloud|Ice Storm - 4 charges,IceStorm|Wall of Ice - 4 charges,WallOfIce|Recharge,Recharge} == ConeOfCold ?? skipTo*1|ConeOfCold
+	--?? ?{Select Action|Cone Of Cold - 5 charges,ConeOfCold|Fog Cloud - 1 charge,FogCloud|Ice Storm - 4 charges,IceStorm|Wall of Ice - 4 charges,WallOfIce|Recharge,Recharge} == FogCloud ?? skipTo*2|FogCloud
+	--?? ?{Select Action|Cone Of Cold - 5 charges,ConeOfCold|Fog Cloud - 1 charge,FogCloud|Ice Storm - 4 charges,IceStorm|Wall of Ice - 4 charges,WallOfIce|Recharge,Recharge} == IceStorm ?? skipTo*3|IceStorm
+	--?? ?{Select Action|Cone Of Cold - 5 charges,ConeOfCold|Fog Cloud - 1 charge,FogCloud|Ice Storm - 4 charges,IceStorm|Wall of Ice - 4 charges,WallOfIce|Recharge,Recharge} == WallOfIce ?? skipTo*4|WallOfIce
+	--?? ?{Select Action|Cone Of Cold - 5 charges,ConeOfCold|Fog Cloud - 1 charge,FogCloud|Ice Storm - 4 charges,IceStorm|Wall of Ice - 4 charges,WallOfIce|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+	
+  --:ConeOfCold|
+  --?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*6|NotEnoughCharges
+  --Spell Cast| Cone of Cold
+  --Effect| You spray a cone of cold in a 60 ft cone
+  --Saving Throw | @{spell_save_dc} Con Save
+  --Failed Save | [[ [$Damage] 8d8 ]] Cold Damage 
+  --Successful Save| [^Damage.halftotal] Cold Damage
+  --Charges Spent| 5
+  --Note| A creature killed by this spell becomes a frozen statue until it thaws.
+  --api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+  --?? ~ChargesOnCharacterSheet$ == 5 ?? skipTo*15|DestructionCheck
+  --skipTo*7|EndOfCard
+
+  --:FogCloud|
+  --?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*8|NotEnoughCharges
+  --Spell Cast *2| Fog Cloud
+  --Effect *2| You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it.
+  --Duration *2| Concentration, up to 1 hour
+  --Range *2| 120 ft
+  --Charges Spent *2| 1
+  --api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+  --?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*16|DestructionCheck
+  --skipTo*9|EndOfCard 
+  
+  --:IceStorm|
+  --?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*10|NotEnoughCharges
+  --Spell Cast *3| Ice Storm
+  --Effect *3|A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range
+  --Saving Throw *3| @{spell_save_dc} Dex Save
+  --Failed Save *3| [[ [$IceStormCold] 4d6 ]] Cold Damage and [[ [$IceStormBlud] 2d8 ]] Bludgeoning Damage
+  --Successful Save *3| [^IceStormCold.halftotal]  Cold Damage and [^IceStormBlud.halftotal] Bludgeoning Damage
+  --Charges Spent *3| 4
+  --Note *3| Hailstones turn the storm’s area of effect into difficult terrain until the end of your next turn.
+  --api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  --?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*17|DestructionCheck
+  --skipTo*11|EndOfCard 
+  
+   --:WallOfIce|
+  --?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*12|NotEnoughCharges
+  --Spell Cast *4| Wall of Ice
+  --Effect *4|You create a wall of ice on a solid surface within range. You can form it into a hemispherical dome or a sphere with a radius of up to 10 feet, or you can shape a flat surface made up of ten 10-foot-square panels. Each panel must be contiguous with another panel. In any form, the wall is 1 foot thick and lasts for the duration. If the wall cuts through a creature’s space when it appears, the creature within its area is pushed to one side of the wall and must make a Dexterity saving throw. 
+  --Duration *4|Concentration, up to 10 minutes
+  --Saving Throw *4| @{spell_save_dc} Dex Save
+  --Failed Save *4| [[ [$WallOfIceCold] 10d6 ]] Cold Damage 
+  --Successful Save *4| [^WallOfIceCold.halftotal]  Cold Damage 
+  --Charges Spent *4| 4
+  --Note *4|  The wall is an object that can be damaged and thus breached. It has AC 12 and 30 hit points per 10-foot section, and it is vulnerable to fire damage. Reducing a 10-foot section of wall to 0 hit points destroys it and leaves behind a sheet of frigid air in the space the wall occupied. A creature moving through the sheet of frigid air for the first time on a turn must make a Constitution saving throw. That creature takes [[ [$WallOfIceFrigid] 5d6 ]] cold damage on a failed save, or [^WallOfIceFrigid.halftotal] damage on a successful one.
+  --api_modattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  --?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*18|DestructionCheck
+  --skipTo*13|EndOfCard  
+  
+  --:Recharge|
+  --Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6+4 + @{repeating_resource_$0_resource_right}]] 
+  --?? $RegainedCharges >= 10 ?? api_setattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|10
+  --?? $RegainedCharges < 10 ?? api_setattr *6|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  --Note *51|The Recharge Formula above is calculated by rolling 1d6+4, and then adding the number of charges the staff currently has (if any). The Staff can hold a maximum of 10 charges. If the total number of charges exceeds 10, then the number of charges will be set to 10.
+  --skipTo*14|EndOfCard
+  
+  --:NotEnoughCharges|
+  --Failure|Not enough charges for this option
+  --skipTo*19|EndOfCard
+  
+  --:DestructionCheck|
+  --Warning|All charges used
+  --Destruction Check| [[ [$Dest] 1d20]]
+  --?? $Dest > 1 ?? Safe|The staff is out of charges, but undamaged
+  --?? $Dest == 1 ?? Destroyed|The staff turns to water and is destroyed!
+  
+  --:EndOfCard|
+}}

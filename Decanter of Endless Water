@@ -1,0 +1,30 @@
+!power {{
+	--name|Decanter of Endless Water
+		--?? ?{Select Action|Stream,Stream|Fountain,Fountain|Geyser - Creature,GeyserCreature|Geyser - Object,GeyserObject} == Stream ?? skipTo*1|Stream
+		--?? ?{Select Action|Stream,Stream|Fountain,Fountain|Geyser - Creature,GeyserCreature|Geyser - Object,GeyserObject} == Fountain ?? skipTo*2|Fountain
+		--?? ?{Select Action|Stream,Stream|Fountain,Fountain|Geyser - Creature,GeyserCreature|Geyser - Object,GeyserObject} == GeyserCreature ?? skipTo*3|GeyserCreature
+		--?? ?{Select Action|Stream,Stream|Fountain,Fountain|Geyser - Creature,GeyserCreature|Geyser - Object,GeyserObject} == GeyserObject ?? skipTo*4|GeyserObject
+
+	--:Stream|
+	--Command Word| Stream
+	--Effect| The Decanter pours out 1 gallon of fresh or salt water (your choice).
+	--skipTo*5|EndOfCard
+
+	--:Fountain|
+	--Command Word *2| Fountain
+	--Effect *2| The Decanter pours out 5 gallons of fresh or salt water (your choice).
+	--skipTo*6|EndOfCard
+
+	--:GeyserCreature|
+	--Command Word *3| Geyser
+	--Effect *3| The Decanter produces 30 gallons of water that gushes forth in a geyser 30 ft. long and 1 ft. wide. As a Bonus Action while holding the Decanter, you can aim the geyser at a creature that you can see within 30 ft. of you.
+	--Saving Throw| 13 Str Save
+	--Failed Save| [[ 1d4 ]] Bludgeoning Damage and Fall Prone
+	--skipTo*7|EndOfCard
+
+	--:GeyserObject|
+	--Command Word *4| Geyser
+	--Effect *4| The Decanter produces 30 gallons of water that gushes forth in a geyser 30 ft. long and 1 ft. wide. As a Bonus Action while holding the Decanter, you can aim the geyser at an Object that isn't being worn or carried that weighs no more than 200 lbs. The Object is either knocked over or pushed up to 15 ft. away from you.
+
+	--:EndOfCard|
+}}

@@ -1,0 +1,21 @@
+!power {{
+	--name|Chime of Opening
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*1|NotEnoughCharges
+	--Ability Used| Open
+	--Effect| The chime issues a clear tone, and one lock or latch on the object opens unless the sound can't reach the object. If no locks or latches remain, the object itself opens.
+	--Range| 120 ft.
+	--Charges Used| 1
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+  	--?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*2|DestructionCheck
+  	--skipTo*3|EndOfCard
+
+  	--:NotEnoughCharges|
+  	--Effect| You strike the Chime of Opening and it does nothing, for it has lost its magic.
+  	--skipTo*4|EndOfCard
+
+  	--:DestructionCheck|
+  	--Warning| You have used the last charge of the Chime and it has lost its magic.
+
+  	--:EndOfCard|
+}}

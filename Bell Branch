@@ -1,0 +1,41 @@
+!power {{
+	--name|Bell Branch
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Detect Presence - 1 charge,Detect|Protection from Evil and Good - 1 charge,Protect|Recharge,Recharge} == Detect ?? skipTo*1|Detect
+			--?? ?{Select Action|Detect Presence - 1 charge,Detect|Protection from Evil and Good - 1 charge,Protect|Recharge,Recharge} == Protect ?? skipTo*2|Protect
+			--?? ?{Select Action|Detect Presence - 1 charge,Detect|Protection from Evil and Good - 1 charge,Protect|Recharge,Recharge} == Recharge ?? skipTo*3|Recharge
+
+	--:Detect|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*4|NotEnoughCharges
+	--Ability Used| Detect Presence
+	--Effect| If there exists a Creature of the Selected Type without Total Cover from the user, the bells ring softly.
+	--Types| Abberations, Celestials, Constructs, Elementals, Fey, Fiends, or Undead
+	--Range| 60 ft.
+	--Charges Used| 1
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--skipTo*5|EndOfCard
+
+	--:Protect|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*6|NotEnoughCharges
+	--Spell Cast| Protection from Evil and Good.
+	--Types *2| Abberations, Celestials, Elementals, Fey, Fiends, and Undead
+	--Effect *2| The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
+	--Target| One Creature
+	--Range *2| Touch
+	--Duration| 10 minutes
+	--Charges Used *2| 1
+	--api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--skipTo*7|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d3 + @{repeating_resource_$0_resource_right}]]
+	--?? $RegainedCharges >= 3 ?? api_setattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|3
+  	--?? $RegainedCharges < 3 ?? api_setattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  	--Note *7|The Recharge Formula above is calculated by rolling 1d3, and then adding the number of charges the branch currently has (if any). The branch can hold a maximum of 3 charges. If the total number of charges exceeds 3, then the number of charges will be set to 3.
+  	--skipTo*8|EndOfCard
+
+  	--:NotEnoughCharges|
+  	--Failure| Not Enough Charges for that Option.
+
+  	--:EndOfCard|
+}}

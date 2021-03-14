@@ -1,0 +1,41 @@
+!power {{
+	--name|Jar of Bugs
+	--Roll| [[ [$MyRoll] 1d20 ]]
+			--?? $MyRoll < 5 ?? skipTo*1|Centipedes
+			--?? $MyRoll < 10 ?? skipTo*2|Spiders
+			--?? $MyRoll < 15 ?? skipTo*3|Wasps
+			--?? $MyRoll < 20 ?? skipTo*4|Scorpions
+			--?? $MyRoll == 20 ?? skipTo*5|SwarmOfBugs
+
+	--:Centipedes|
+	--Bug| Centipedes
+	--Quantity| [[ 1d10 ]] Bugs
+	--skipTo*5|EndOfCard
+
+	--:Spiders|
+	--?? [[ [$SubRoll] 1d4 ]] == 4 ?? skipTo*6|WolfSpiders
+	--Bugs *2| Spiders
+	--Quantity *2| [^SubRoll] Bugs
+	--skipTo*7|EndOfCard
+
+	--:WolfSpiders|
+	--Bugs *3| Wolf Spiders
+	--Quantity *3| 3 Bugs
+	--skipTo*8|EndOfCard
+
+	--:Wasps|
+	--Bug *4| Wasps
+	--Quantity *4| [[ 1d6 ]] Bugs
+	--skipTo*9|EndOfCard
+
+	--:Scorpions|
+	--Bug *5| Scorpion
+	--Quantity *5| 1 Bug
+	--skipTo*10|EndOfCard
+
+	--:SwarmOfBugs|
+	--Bug *6| All Of Them
+	--Quantity *6| Far Too Many
+
+	--:EndOfCard|
+}}

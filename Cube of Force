@@ -1,0 +1,130 @@
+!power {{
+	--name|Cube of Force
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == FaceOne ?? skipTo*1|FaceOne
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == FaceTwo ?? skipTo*2|FaceTwo
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == FaceThree ?? skipTo*3|FaceThree
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == FaceFour ?? skipTo*4|FaceFour
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == FaceFive ?? skipTo*5|FaceFive
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == FaceSix ?? skipTo*6|FaceSix
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == Disintegrate ?? Disintegrate*7|FaceOne
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == HornOfBlasting ?? skipTo*8|HornOfBlasting
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == Passwall ?? skipTo*9|Passwall
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == PrismaticSpray ?? skipTo*10|PrismaticSpray
+			--?? ?{Select Action|Face 1 - 1 charge,FaceOne|Face 2 - 2 charges,FaceTwo|Face 3 - 3 charges,FaceThree|Face 4 - 4 charges,FaceFour|Face 5 - 5 charges,FaceFive|Face 6 - 0 charges,FaceSix|Barrier Destroyed - Disintegrate,Disintegrate|Barrier Destroyed - Horn of Blasting,HornOfBlasting|Barrier Destroyed - Passwall,Passwall|Barrier Destroyed - Prismatic Spray,PrismaticSpray|Barrier Destroyed - Wall of Fire,WallOfFire|Recharge,Recharge} == Recharge ?? skipTo*11|Recharge
+
+	--:FaceOne|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*12|NotEnoughCharges
+	--Ability Used|Face 1
+	--Effect| The Barrier is Activated and Gases, Wind, and Fog can't pass through.
+	--Duration| 1 minute
+	--Size| 15 ft. on a side, centered the Cube
+	--Charges Used| 1
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+  	--skipTo*13|EndOfCard
+
+	--:FaceTwo|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*15|NotEnoughCharges
+	--Ability Used *2|Face 2
+	--Effect *2| The Barrier is Activated and Nonliving Matter can't pass through.
+	--Duration *2| 1 minute
+	--Size *2| 15 ft. on a side, centered the Cube
+	--Charges Used *2| 1
+	--Note *2| Walls, Floors, and Ceilings can pass through at your discretion.
+	--api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+  	--skipTo*16|EndOfCard
+
+	--:FaceThree|
+	--?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*17|NotEnoughCharges
+	--Ability Used *3|Face 3
+	--Effect *3| The Barrier is Activated and Living Matter can't pass through.
+	--Duration *3| 1 minute
+	--Size *3| 15 ft. on a side, centered the Cube
+	--Charges Used *3| 3
+	--api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
+  	--skipTo*18|EndOfCard
+  	
+	--:FaceFour|
+	--?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*19|NotEnoughCharges
+	--Ability Used *4|Face 4
+	--Effect *4| The Barrier is Activated and Spell Effects can't pass through.
+	--Duration *4| 1 minute
+	--Size *4| 15 ft. on a side, centered the Cube
+	--Charges Used *4| 4
+	--api_modattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  	--skipTo*20|EndOfCard
+  	
+	--:FaceFive|
+	--?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*21|NotEnoughCharges
+	--Ability Used *5|Face 5
+	--Effect *5| The Barrier is Activated and Nothing can pass through.
+	--Duration *5| 1 minute
+	--Size *5| 15 ft. on a side, centered the Cube
+	--Charges Used *5| 1
+	--Note *5| Walls, Floors, and Ceilings can pass through at your discretion.
+	--api_modattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+  	--skipTo*22|EndOfCard
+  	
+	--:FaceSix|
+	--Ability Used *6|Face 6
+	--Effect *6| The Barrier is Deactivated.
+	--Charges Used *6| 0
+  	--skipTo*23|EndOfCard
+  	
+	--:Disintegrate|
+	--Collision *7| Disintegration
+	--Effect *7| The Barrier is Destroyed.
+	--Charges Lost *7| [[ [$ChargesLost] 1d12 ]]
+	--api_modattr *7|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-[^ChargesLost]
+	--?? ~ChargesOnCharacterSheet$ < 0 ?? api_setattr*8|_silent _charid @{character_id} _repeating_resource_$0_resource_right|0
+	--Note *7| The Cube of Force cannot have negative charge, so if this loss would have brought the Cube of Force to negative charge, it will instead be set to 0.
+	--skipTo*24|EndOfCard
+
+	--:HornOfBlasting|
+	--Collision *8| Horn of Blasting
+	--Effect *8| The Barrier is Destroyed.
+	--Charges Lost *8| [[ [$ChargesLost] 1d10 ]]
+	--api_modattr *9|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-[^ChargesLost]
+	--?? ~ChargesOnCharacterSheet$ < 0 ?? api_setattr*10|_silent _charid @{character_id} _repeating_resource_$0_resource_right|0
+	--Note *8| The Cube of Force cannot have negative charge, so if this loss would have brought the Cube of Force to negative charge, it will instead be set to 0.
+	--skipTo*25|EndOfCard
+
+	--:Passwall|
+	--Collision *9| Passwall
+	--Effect *9| The Barrier is Destroyed.
+	--Charges Lost *9| [[ [$ChargesLost] 1d6 ]]
+	--api_modattr *11|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-[^ChargesLost]
+	--?? ~ChargesOnCharacterSheet$ < 0 ?? api_setattr*12|_silent _charid @{character_id} _repeating_resource_$0_resource_right|0
+	--Note *9| The Cube of Force cannot have negative charge, so if this loss would have brought the Cube of Force to negative charge, it will instead be set to 0.
+	--skipTo*26|EndOfCard
+
+	--:PrismaticSpray|
+	--Collision *10| Prismatic Spray
+	--Effect *10| The Barrier is Destroyed.
+	--Charges Lost *10| [[ [$ChargesLost] 1d20 ]]
+	--api_modattr *13|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-[^ChargesLost]
+	--?? ~ChargesOnCharacterSheet$ < 0 ?? api_setattr*14|_silent _charid @{character_id} _repeating_resource_$0_resource_right|0
+	--Note *10| The Cube of Force cannot have negative charge, so if this loss would have brought the Cube of Force to negative charge, it will instead be set to 0.
+	--skipTo*27|EndOfCard
+
+	--:WallOfFire|
+	--Collision *11| Wall of Fire
+	--Effect *11| The Barrier is Destroyed.
+	--Charges Lost *11| [[ [$ChargesLost] 1d4 ]]
+	--api_modattr *15|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-[^ChargesLost]
+	--?? ~ChargesOnCharacterSheet$ < 0 ?? api_setattr*16|_silent _charid @{character_id} _repeating_resource_$0_resource_right|0
+	--Note *11| The Cube of Force cannot have negative charge, so if this loss would have brought the Cube of Force to negative charge, it will instead be set to 0.
+	--skipTo*28|EndOfCard
+
+	--:Recharge|
+  	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d20 + @{repeating_resource_$0_resource_right}]] 
+  	--?? $RegainedCharges >= 36 ?? api_setattr *17|_silent _charid @{character_id} _repeating_resource_$0_resource_right|36
+  	--?? $RegainedCharges < 36 ?? api_setattr *18|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  	--Note *12|The Recharge Formula above is calculated by rolling 1d20, and then adding the number of charges the Cube currently has (if any). The Cube can hold a maximum of 36 charges. If the total number of charges exceeds 36, then the number of charges will be set to 36.
+  	--skipTo*29|EndOfCard
+
+  	--:NotEnoughCharges|
+  	--Failure|Not enough charges for this option
+
+  	--:EndOfCard|
+}}

@@ -1,0 +1,26 @@
+!power {{
+	--name|Wand of Identification
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_left}
+			--?? ?{Select Action|Identify,Identify|Recharge,Recharge} == Identify ?? skipTo*1|Identify
+			--?? ?{Select Action|Identify,Identify|Recharge,Recharge} == Recharge ?? skipTo*2|Recharge
+
+	--:Identify|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*3|NotEnoughCharges
+	--Spell Cast|Identify
+	--Effect| You choose one object that you must touch throughout the casting of the spell. If it is a magic item or some other magic-imbued object, you learn its properties and how to use them, whether it requires attunement to use, and how many charges it has, if any. You learn whether any spells are affecting the item and what they are. If the item was created by a spell, you learn which spell created it. If you instead touch a creature throughout the casting, you learn what spells, if any, are currently affecting it.
+	--Charges Spent|1
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_left|-1
+  	--skipTo*4|EndOfCard
+
+  	--:Recharge|
+  	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d3 + @{repeating_resource_$0_resource_left}]] 
+ 	--?? $RegainedCharges >= 3 ?? api_setattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_left|3
+ 	--?? $RegainedCharges < 3 ?? api_setattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_left|[^RegainedCharges]
+  	--Note *1|The Recharge Formula above is calculated by rolling 1d3, and then adding the number of charges the staff currently has (if any). The Staff can hold a maximum of 3 charges. If the total number of charges exceeds 3, then the number of charges will be set to 3.
+ 	--skipTo*5|EndOfCard
+
+ 	--:NotEnoughCharges|
+  	--Failure|Not enough charges for this option
+
+	--:EndOfCard|
+}}

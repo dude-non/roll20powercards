@@ -1,0 +1,65 @@
+!power {{
+	--name|Amulet of the Black Skull
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Teleport - 1 charge,Teleport|Recharge,Recharge} == Teleport ?? skipTo*1|Teleport
+			--?? ?{Select Action|Teleport - 1 charge,Teleport|Recharge,Recharge} == Recharge ?? skipTo*2|Recharge
+
+	--:Teleport|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*3|NotEnoughCharges
+	--Ability Used| Teleport
+	--Range| 100 ft.
+	--Charges Used| 1
+	--Effect| If not undead, you must save against negative transformative effects.
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--Saving Throw| [[ 16 ]] Con Save
+	--Transformation Roll| [[ [$TransRoll] 1d100 ]]
+			--?? $TransRoll < 21 ?? skipTo*4|EffectOne
+			--?? $TransRoll < 36 ?? skipTo*5|EffectTwo
+			--?? $TransRoll < 51 ?? skipTo*6|EffectThree
+			--?? $TransRoll < 71 ?? skipTo*7|EffectFour
+			--?? $TransRoll < 96 ?? skipTo*8|EffectFive
+			--skipTo*9|EffectSix
+
+	--:EffectOne|
+	--Transformation *1| The Symbol of Acererak is burned into your flesh, a curse that can only be removed with a Remove Curse spell or similar magic. Until the curse ends, you Hit Points can't be restored by magic.
+	--skipTo*10|EndOfCard
+
+	--:EffectTwo|
+	--Transformation *2| You grow 1 Size larger as if affected by the Enlarge Spell.
+	--Duration *2| 1 hour
+	--skipTo*11|EndOfCard
+
+	--:EffectThree|
+	--Transformation *3| You shrink 1 Size smaller as if affected by the Reduce Spell.
+	--Duration *3| 1 hour
+	--skipTo*12|EndOfCard
+
+	--:EffectFour|
+	--Transformation *4| All of your possessions, except the Amulet of the Black Skull are teleported to random unoccupied spaces!
+	--Range *4| 100 ft.
+	--skipTo*13|EndOfCard
+
+	--:EffectFive|
+	--Transformation *5| You are Paralyzed!
+	--Note *5| You are incapacitated and can't move or speak. You automatically fail Strenght and Dexterity Saving Throws. Attack Rolls against you have Advantage. Any Attack made within 5 ft. of you is a Critical Hit.
+	--Duration *5| 1 minute or Lesser Restored
+	--skipTo*14|EndOfCard
+
+	--:EffectSix|
+	--Transformation *6| You are Petrified!
+	--Note *6| All of you and your posessions turn to stone: you weight increases 10-fold and you cease aging. You are incapacitate and can't move or speak, and are unaware of your surroundings. Attack Rolls against you have Advantage. You automatically fail Strength and Dexterit Saving Throws. You have Resistance to ALL Damage. You are immune to Poison and Disease, however any Poison or Disease lingering at time of Petrification are suspended, not neutralized.
+	--Duration *6| Greater Restoration or FOREVER.
+	--skipTo*15|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6 + @{repeating_resource_$0_resource_right}]]
+	--?? $RegainedCharges >= 6 ?? api_setattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|6
+  	--?? $RegainedCharges < 6 ?? api_setattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  	--Note *7|The Recharge Formula above is calculated by rolling 1d6, and then adding the number of charges the amulet currently has (if any). The amulet can hold a maximum of 6 charges. If the total number of charges exceeds 6, then the number of charges will be set to 6.
+  	--skipTo*16|EndOfCard
+
+  	--:NotEnoughCharges|
+  	--Failure| Not Enough Charges to Teleport.
+
+  	--:EndOfCard|
+}}

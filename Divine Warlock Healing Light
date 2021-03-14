@@ -1,0 +1,47 @@
+!power {{
+	--name|Healing Light
+	--inlinereplace|ChargesOnCharacterSheet|@{class_resource}
+			--?? ?{Select Action|Healing Light - 1 charge,HLOne|Healing Light - 2 charges,HLTwo|Healing Light - 3 charges,HLThree|Healing Light - 4 charges,HLFour|Recharge,Recharge} == HLOne ?? skipTo*1|HLOne
+			--?? ?{Select Action|Healing Light - 1 charge,HLOne|Healing Light - 2 charges,HLTwo|Healing Light - 3 charges,HLThree|Healing Light - 4 charges,HLFour|Recharge,Recharge} == HLTwo ?? skipTo*2|HLTwo
+			--?? ?{Select Action|Healing Light - 1 charge,HLOne|Healing Light - 2 charges,HLTwo|Healing Light - 3 charges,HLThree|Healing Light - 4 charges,HLFour|Recharge,Recharge} == HLThree ?? skipTo*3|HLThree
+			--?? ?{Select Action|Healing Light - 1 charge,HLOne|Healing Light - 2 charges,HLTwo|Healing Light - 3 charges,HLThree|Healing Light - 4 charges,HLFour|Recharge,Recharge} == HLFour ?? skipTo*4|HLFour
+			--?? ?{Select Action|Healing Light - 1 charge,HLOne|Healing Light - 2 charges,HLTwo|Healing Light - 3 charges,HLThree|Healing Light - 4 charges,HLFour|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+
+	--:HLOne|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*21|NotEnoughCharges
+	--Ability *1| Healing Light - 1 charge
+	--Healing *1| [[ 1d6 ]] Hit Points
+	--api_modattr *1|_silent _charid @{character_id} _class_resource|-1
+	--skipTo*22|EndOfCard
+
+	--:HLTwo|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*23|NotEnoughCharges
+	--Ability *2| Healing Light - 2 charges
+	--Healing *2| [[ 2d6 ]] Hit Points
+	--api_modattr *2|_silent _charid @{character_id} _class_resource|-2
+	--skipTo*24|EndOfCard
+
+	--:HLThree|
+	--?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*25|NotEnoughCharges
+	--Ability *3| Healing Light - 3 charges
+	--Healing *3| [[ 3d6 ]] Hit Points
+	--api_modattr *3|_silent _charid @{character_id} _class_resource|-3
+	--skipTo*26|EndOfCard
+
+	--:HLFour|
+	--?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*27|NotEnoughCharges
+	--Ability *4| Healing Light - 4 charges
+	--Healing *4| [[ 4d6 ]] Hit Points
+	--api_modattr *4|_silent _charid @{character_id} _class_resource|-4
+	--skipTo*28|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula| Your Healing Light count Recharges up to [[ [$RegainedCharges] 1 + @{base_level} ]] Uses.
+	--api_setattr *21|_silent _charid @{character_id} _class_resource|[^RegainedCharges]
+	--skipTo*60|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure| Nora has run out of Healing to Bestow!
+
+	--:EndOfCard|
+}}

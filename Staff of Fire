@@ -2,11 +2,11 @@
   --name|Staff of Fire
   --leftsub|You have resistance to fire damage 
   --inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
-	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == BurningHands ?? skipTo*1|BurningHands
-	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Fireball ?? skipTo*2|Fireball
-	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFire ?? skipTo*3|WallOfFire
-     --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFireReRoll ?? skipTo*4|WallOfFireReRoll
-     --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == BurningHands ?? skipTo*1|BurningHands
+		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Fireball ?? skipTo*2|Fireball
+		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFire ?? skipTo*3|WallOfFire
+     		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFireReRoll ?? skipTo*4|WallOfFireReRoll
+     		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
 	
   --:BurningHands|
   --?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*6|NotEnoughCharges

@@ -37,7 +37,7 @@ Currently Implemented:
 
 -_Wand of Identification_ (Custom Item for my campaign since none of my players took Identify >n< )
 
--_Wand of Magic Missile
+-_Wand of Magic Missile_
 
 -_Wand of Secrets_
 

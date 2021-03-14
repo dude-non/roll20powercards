@@ -2,11 +2,11 @@
   --name|Staff of Fire
   --leftsub|You have resistance to fire damage 
   --inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
-		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == BurningHands ?? skipTo*1|BurningHands
-		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Fireball ?? skipTo*2|Fireball
-		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFire ?? skipTo*3|WallOfFire
-     		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFireReRoll ?? skipTo*4|WallOfFireReRoll
-     		--?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == BurningHands ?? skipTo*1|BurningHands
+	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Fireball ?? skipTo*2|Fireball
+	   --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFire ?? skipTo*3|WallOfFire
+     --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == WallOfFireReRoll ?? skipTo*4|WallOfFireReRoll
+     --?? ?{Select Action|Burning Hands - 1 charge,BurningHands|Fireball - 3 charges,Fireball|Wall of Fire - 4 charges,WallOfFire|Wall of Fire - Secondary Damage,WallOfFireReRoll|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
 	
   --:BurningHands|
   --?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*6|NotEnoughCharges
@@ -25,13 +25,13 @@
   --:Fireball|
   --?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*9|NotEnoughCharges
   --Spell Cast *2| Fireball
-  --Effect *2| YA bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. 
+  --Effect *2| A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. 
   --Saving Throw *2| @{spell_save_dc} Dex Save
   --Failed Save *2| [[ [$Damage] 8d6 ]] Fire Damage 
   --Successful Save *2| [^Damage.halftotal] Fire Damage
   --Range *2| 150 ft.
   --Size *2| 20 ft. Radius Sphere
-  --Charges Spent *2| 1
+  --Charges Spent *2| 3
   --Note *2| The fire spreads around corners. It ignites flammable objects in the area that aren’t being worn or carried.
   --api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
   --?? ~ChargesOnCharacterSheet$ == 3 ?? skipTo*10|DestructionCheck
@@ -40,7 +40,7 @@
   --:WallOfFire|
   --?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*12|NotEnoughCharges
   --Spell Cast *3| Wall of Ice
-  --Effect *3|You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration. When the wall appears, each creature within its area must make a Dexterity saving throw. 
+  --Effect *3| You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration. When the wall appears, each creature within its area must make a Dexterity saving throw. 
   --Duration *3|Concentration, up to 1 minute
   --Saving Throw *3| @{spell_save_dc} Dex Save
   --Failed Save *3| [[ [$WallOfIceCold] 5d8 ]] Fire Damage 

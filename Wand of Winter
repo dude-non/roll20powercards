@@ -1,0 +1,91 @@
+!power {{
+	--name|Wand of Winter
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Ray of Frost [1st level] - 0 charges,RayOfFrostOne|Ray of Frost [5th level] - 1 charge,RayOfFrostTwo|Sleet Storm - 3 charges,SleetStorm|Ice Storm - 4 charges,IceStorm|Recharge,Recharge} == RayOfFrostOne ?? skipTo*1|RayOfFrostOne
+			--?? ?{Select Action|Ray of Frost [1st level] - 0 charges,RayOfFrostOne|Ray of Frost [5th level] - 1 charge,RayOfFrostTwo|Sleet Storm - 3 charges,SleetStorm|Ice Storm - 4 charges,IceStorm|Recharge,Recharge} == RayOfFrostTwo ?? skipTo*2|RayOfFrostTwo
+			--?? ?{Select Action|Ray of Frost [1st level] - 0 charges,RayOfFrostOne|Ray of Frost [5th level] - 1 charge,RayOfFrostTwo|Sleet Storm - 3 charges,SleetStorm|Ice Storm - 4 charges,IceStorm|Recharge,Recharge} == SleetStorm ?? skipTo*3|SleetStorm
+			--?? ?{Select Action|Ray of Frost [1st level] - 0 charges,RayOfFrostOne|Ray of Frost [5th level] - 1 charge,RayOfFrostTwo|Sleet Storm - 3 charges,SleetStorm|Ice Storm - 4 charges,IceStorm|Recharge,Recharge} == IceStorm ?? skipTo*4|IceStorm
+			--?? ?{Select Action|Ray of Frost [1st level] - 0 charges,RayOfFrostOne|Ray of Frost [5th level] - 1 charge,RayOfFrostTwo|Sleet Storm - 3 charges,SleetStorm|Ice Storm - 4 charges,IceStorm|Recharge,Recharge} == Recharge ?? skipTo*5|Recharge
+
+	--:RayOfFrostOne|
+	--Spell Cast| Ray of Frost - 1st level
+	--Spell Attack| [[ [$AttackRoll] 1d20 ]] + [[ 5 ]]
+	--?? $AttackRoll == 20 ?? skipTo*6|RayOfFrostOneCrit
+	--Damage| [[ 1d8 ]] Cold Damage
+	--Effect| The target's speed is reduced by 10 ft. until the start of your next turn.
+	--Range| 60 ft.
+	--Charges Used|0
+	--skipTo*7|EndOfCard
+
+	--:RayOfFrostOneCrit
+	--Damage *2| [[ 2d8 ]] Cold Damage
+	--Effect *2| The target's speed is reduced by 10 ft. until the start of your next turn.
+	--Range *2| 60 ft.
+	--Charges Used *2|0
+	--skipTo*8|EndOfCard
+
+	--:RayOfFrostTwo|
+	--?? ~ChargesOnCharacterSheet < 1 ?? skipTo*9|NotEnoughCharges
+	--Spell Cast *2| Ray of Frost - 5th level
+	--Spell Attack *2| [[ [$AttackRoll] 1d20 ]] + [[ 5 ]]
+	--?? $AttackRoll == 20 ?? skipTo*10|RayOfFrostTwoCrit
+	--Damage *3| [[ 2d8 ]] Cold Damage
+	--Effect *3| The target's speed is reduced by 10 ft. until the start of your next turn.
+	--Range *3| 60 ft.
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--?? ~ChargesOnCharacterSheet == 1 ?? skipTo*11|DestructionCheck
+	--skipTo*12|EndOfCard
+
+	--:RayOfFrostTwoCrit|
+	--Damage *4| [[ 48 ]] Cold Damage
+	--Effect *4| The target's speed is reduced by 10 ft. until the start of your next turn.
+	--Range *4| 60 ft.
+	--api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--?? ~ChargesOnCharacterSheet == 1 ?? skipTo*13|DestructionCheck
+	--skipTo*14|EndOfCard
+
+	--:SleetStorm|
+	--?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*15|NotEnoughCharges
+	--Spell Cast *3| Sleet Storm
+	--Effect *5|Until the spell ends, freezing rain and sleet fall in a 20-foot-tall cylinder with a 40-foot radius centered on a point you choose within range. The area is heavily obscured, and exposed flames in the area are doused. The ground in the area is covered with slick ice, making it difficult terrain. When a creature enters the spell's area for the first time on a turn or starts its turn there, it must make a Dexterity saving throw. On a failed save, it falls prone.
+	--Saving Throw| [[ 15 ]] Dex Save
+	--Range *5| 150 ft.
+	--Duration| 1 minute [Concentration]
+	--Note *1|If a creature starts its turn in the spell's area and is concentrating on a spell, the creature must make a successful Constitution saving throw against your spell save DC or lose concentration.
+	--SavingThrow *1| [[ 15 ]] Con Save
+	--api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
+	--?? ~ChargesOnCharacterSheet == 3 ?? skipTo*16|DestructionCheck
+	--skipTo*17|EndOfCard
+
+	--:IceStorm|
+	--?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*18|NotEnoughCharges
+	--Spell Cast| Ice Storm
+	--Effect *4|A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range.
+	--Saving Throw *2| [[ 15 ]] Dex Save
+	--Failed Save| [[ [$BluntDamage] 2d8 ]] Bludgeoning + [[ [$ColdDamage] 4d6 ]] Cold Damage
+	--Successful Save| [^BluntDamage.halftotal] Bludgeoning + [^ColdDamage.halftotal] Cold Damage
+	--Range *6| 300 ft.
+	--Note *2|Hailstones turn the storm's area of effect into difficult terrain until the end of your next turn.
+	--api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+	--?? ~ChargesOnCharacterSheet == 4 ?? skipTo*19|DestructionCheck
+	--skipTo*20|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6+1 + @{repeating_resource_$0_resource_right}]]
+	--?? $RegainedCharges >= 7 ?? api_setattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|7
+  	--?? $RegainedCharges < 7 ?? api_setattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  	--Note *1|The Recharge Formula above is calculated by rolling 1d6+1, and then adding the number of charges the wand currently has (if any). The Wand can hold a maximum of 7 charges. If the total number of charges exceeds 7, then the number of charges will be set to 7.
+  	--skipTo*21|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure|Not enough charges for this option.
+	--skipTo*22|EndOfCard
+
+	--:DestructionCheck|
+  	--Warning|All charges used
+  	--Destruction Check| [[ [$Dest] 1d20]]
+  	--?? $Dest > 1 ?? Safe|The wand is out of charges, but undamaged.
+  	--?? $Dest == 1 ?? Destroyed|The wand melts away, forever destroyed!
+
+  	--:EndOfCard|
+}}

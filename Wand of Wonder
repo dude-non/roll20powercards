@@ -1,0 +1,179 @@
+!power {{
+	--name|Wand of Wonder
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Wonder! - 1 charge,Wonder|Recharge,Recharge} == Wonder ?? skipTo*1|Wonder
+			--?? ?{Select Action|Wonder! - 1 charge,Wonder|Recharge,Recharge} == Recharge ?? skipTo*2|Recharge
+
+	--:Wonder|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*3|NotEnoughCharges
+	--Ability Used| Something Wonderful is About to Happen
+	--Range| 120 ft.
+	--Saving Throw| 15 DC
+	--Roll| [[ [$MyRoll] 1d100 ]]
+			--?? $MyRoll < 6 ?? skipTo*4|Slow
+			--?? $MyRoll < 11 ?? skipTo*5|Faerie
+			--?? $MyRoll < 16 ?? skipTo*6|Awesome
+			--?? $MyRoll < 21 ?? skipTo*7|Gust
+			--?? $MyRoll < 26 ?? skipTo*8|DetectThoughts
+			--?? $MyRoll < 31 ?? skipTo*9|Stank
+			--?? $MyRoll < 34 ?? skipTo*10|Rain
+			--?? $MyRoll < 37 ?? skipTo*11|Animal
+			--?? $MyRoll < 47 ?? skipTo*12|Bolt
+			--?? $MyRoll < 50 ?? skipTo*13|Butterflies
+			--?? $MyRoll < 54 ?? skipTo*14|Enlarge
+			--?? $MyRoll < 59 ?? skipTo*15|Darkness
+			--?? $MyRoll < 63 ?? skipTo*16|Grass
+			--?? $MyRoll < 66 ?? skipTo*17|Vamoose
+			--?? $MyRoll < 70 ?? skipTo*18|Shrink
+			--?? $MyRoll < 80 ?? skipTo*19|Fireball
+			--?? $MyRoll < 85 ?? skipTo*20|Invisibility
+			--?? $MyRoll < 88 ?? skipTo*21|Leaves
+			--?? $MyRoll < 91 ?? skipTo*22|Gems
+			--?? $MyRoll < 96 ?? skipTo*23|Light
+			--?? $MyRoll < 98 ?? skipTo*24|Violet
+			--?? $MyRoll < 101 ??skipTo*25|Petrify
+
+	--:Slow|
+	--Spell Cast *1| Slow.
+	--Target *1| 6 creatures
+	--Duration *1| 1 minute [Concentration]
+	--skipTo*26|ConsumeCharge
+
+	--:Faerie|
+	--Spell Cast *2| Faerie Fire
+	--Duration *2| 1 minute [Concentration]
+	--skipTo*27|ConsumeCharge
+
+	--:Awesome|
+	--Effect *3| You are stunned until the start of your next turn, believing something awesome just happened.
+	--skipTo*28|ConsumeCharge
+
+	--:Gust|
+	--Spell Cast *4| Gust of Wind
+	--Duration *4| 1 minute [Concentration]
+	--skipTo*29|ConsumeCharge
+
+	--:DetectThoughts|
+	--Effect *5| If you have selected a target, it is subject to the effects of Detect Thoughts, otheriwse you take Psychic Damage.
+	--Damage *5| [[ 1d6 ]] Psychic Damage
+	--Duration *5| 1 minute [Concentration]
+	--skipTo*30|ConsumeCharge
+
+	--:Stank|
+	--Spell Cast *6| Stinking Cloud
+	--Duration *6| 1 minute [Concentration]
+	--skipTo*31|ConsumeCharge
+
+	--:Rain|
+	--Effect *7| Heavy rain falls in a 60-foot radius centered on the target. The area becomes lightly obscured. The rain falls until the start of your next turn.
+	--skipTo*32|ConsumeCharge
+
+	--:Animal|
+	--Effect *8| An animal appears in the unoccupied space nearest the target. The animal isn't under your control and acts as it normally would.
+	--Roll*2| [[ [$AnimalDiceRoll] 1d100 ]]
+	--?? $AnimalDiceRoll < 26 ?? skipTo*33|Rhino
+	--?? $AnimalDiceRoll < 50 ?? skipTo*34|Elephant
+	--Animal *1| Rat
+	--skipTo*35|ConsumeCharge
+
+	--:Rhino|
+	--Animal *2|Rhinoceros
+	--skipTo*36|ConsumeCharge
+
+	--:Elephant|
+	--Animal *3|Elephant
+	--skipTo*37|ConsumeCharge
+
+	--:Bolt|
+	--Spell Cast *9| Lightning Bolt
+	--Failed Save *9| [[ [$LightningDamage] 8d6 ]] Lightning Damage
+	--Successful Save *9| [^LightningDamage.halftotal] Lightning Damage
+	--skipTo*38|ConsumeCharge
+
+	--:Butterflies|
+	--Effect *10| A cloud of 600 oversized butterflies fills a 30-foot radius centered on the target. The area becomes heavily obscured. 
+	--Duration *10| 10 minutes
+	--skipTo*39|ConsumeCharge
+
+	--:Enlarge|
+	--Spell Cast *11| Enlarge
+	--Duration *11| 1 minute [Concentration]
+	--skipTo*40|ConsumeCharge
+
+	--:Darkness|
+	--Spell Cast *12| Darkness
+	--Duration *12| 10 minutes [Concentration]
+	--skipTo*41|ConsumeCharge
+
+	--:Grass|
+	--Effect *13| Grass grows on the ground in a 60-foot radius centered on the target. If grass is already there, it grows to ten times its normal size.
+	--Duration *13| 1 minute
+	--skipTo*42|ConsumeCharge
+
+	--:Vamoose|
+	--Effect *14| An object of the DM's choice disappears into the Ethereal Plane. The object must be neither worn nor carried, within 120 feet of the target, and no larger than 10 feet in any dimension.
+	--skipTo*43|ConsumeCharge
+
+	--:Shrink|
+	--Spell Cast *15| Shrink
+	--Duration *15| 1 minute [Concentration]
+	--skipTo*44|ConsumeCharge
+
+	--:Fireball|
+	--Spell Cast *16| Fireball
+	--Failed Save *16| [[ [$FireballDamage] 8d6 ]] Fire Damage
+	--Successful Save *16| [^FireballDamage.halftotal] Fire Damage
+	--skipTo*45|ConsumeCharge
+
+	--:Invisibility|
+	--Spell Cast *17| Invisibility
+	--Target *17| Yourself
+	--Duration *17| 1 hour [Concentration]
+	--skipTo*46|ConsumeCharge
+
+	--:Leaves|
+	--Effect *18| Leaves grow from the target. If you chose a point in space as the target, leaves sprout from the creature nearest to that point.
+	--Duration *18| 24 hours or until picked.
+	--skipTo*47|ConsumeCharge
+
+	--:Gems|
+	--Effect *19| A stream of [[ 1d4 x 10 ]] gems, each worth 1 gp, shoots from the wand's tip in a line 30 feet long and 5 feet wide. Each gem deals 1 bludgeoning damage, and the total damage of the gems is divided equally among all creatures in the line.
+	--skipTo*48|ConsumeCharge
+
+	--:Light|
+	--Effect *20| A burst of colorful shimmering light extends from you in a 30-foot radius. You and each creature in the area that can see must succeed on a Constitution saving throw or become blinded. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+	--Duration *20| 1 minute
+	--skipTo*49|ConsumeCharge
+
+	--:Violet|
+	--Effect *21| The target's skin turns bright blue for [[ 1d10 ]] days. If you chose a point in space, the creature nearest to that point is affected.
+	--skipTo*50|ConsumeCharge
+
+	--:Petrify|
+	--Effect *22| If you targeted a creature, it must make a Constitution saving throw. If you didn't target a creature, you become the target and must make the saving throw. If the saving throw fails by 5 or more, the target is instantly petrified. On any other failed save, the target is restrained and begins to turn to stone. While restrained in this way, the target must repeat the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success.
+	--Duration *22| Greater Restoration or Similar Magic.
+
+	--:ConsumeCharge|
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--?? ~ChargesOnCharacterSheet == 1 ?? skipTo*51|DestructionCheck
+	--skipTo*52|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6+1 + @{repeating_resource_$0_resource_right}]]
+	--?? $RegainedCharges >= 7 ?? api_setattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|7
+  	--?? $RegainedCharges < 7 ?? api_setattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+  	--Note *1|The Recharge Formula above is calculated by rolling 1d6+1, and then adding the number of charges the wand currently has (if any). The Wand can hold a maximum of 7 charges. If the total number of charges exceeds 7, then the number of charges will be set to 7.
+  	--skipTo*53|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure| Not enough charges to Inspire Wonder.
+	--skipTo*54|EndOfCard
+
+	--:DestructionCheck|
+  	--Warning|All charges used
+  	--Destruction Check| [[ [$Dest] 1d20]]
+  	--?? $Dest > 1 ?? Safe|The wand is out of charges, but undamaged.
+  	--?? $Dest == 1 ?? Destroyed|The wand crumbles into dust and is destroyed!
+
+	--:EndOfCard|
+}}

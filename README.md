@@ -31,6 +31,8 @@ Currently Implemented:
 
 - _Staff of Healing_
 
+- _Staff of Power_
+
 - _Staff of Swarming Insects_
 
 - _Staff of Withering_

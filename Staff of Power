@@ -169,8 +169,15 @@
 	--:DestructionCheck|
   	--Warning|All charges used
   	--Destruction Check| [[ [$Dest] 1d20]]
+  	--?? $Dest == 20 ?? skipTo*47|CriticalRecharge
   	--?? $Dest > 1 ?? Safe|The Staff is out of charges, but undamaged.
   	--?? $Dest == 1 ?? Destroyed|The Staff loses all properties but +2 to Attack Rolls and Damage!
+  	--skipTo*48|EndOfCard
+
+  	--:CriticalRecharge|
+  	--Success|Critical Recharge!
+  	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d8 + 2 + @{repeating_resource_$0_resource_right}]] 
+  	--api_setattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
 
 	--:EndOfCard|
 }}

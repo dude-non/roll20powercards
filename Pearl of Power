@@ -1,0 +1,41 @@
+!power {{
+	--name|Pearl of Power
+			--?? ?{Select Action|Recharge 1st level,First|Recharge 2nd level,Second|Recharge 3rd level,Third|Recharge,Recharge} == First ?? skipTo*1|First
+			--?? ?{Select Action|Recharge 1st level,First|Recharge 2nd level,Second|Recharge 3rd level,Third|Recharge,Recharge} == Second ?? skipTo*2|Second
+			--?? ?{Select Action|Recharge 1st level,First|Recharge 2nd level,Second|Recharge 3rd level,Third|Recharge,Recharge} == Third ?? skipTo*3|Third
+			--?? ?{Select Action|Recharge 1st level,First|Recharge 2nd level,Second|Recharge 3rd level,Third|Recharge,Recharge} == Recharge ?? skipTo*4|Recharge
+
+	--:First|
+	--?? @{other_resource} < 1 ?? skipTo*5|NotEnoughCharges
+	--Ability Used| Recharge 1st level Spell Slot
+	--New Total| [[ @{lvl1_slots_expended} + 1 ]] slots
+	--api_modattr *1|_silent _charid @{character_id} _other_resource|-1
+	--api_modattr *2|_silent _charid @{character_id} _lvl1_slots_expended|1
+	--skipTo*6|EndOfCard
+
+	--:Second|
+	--?? @{other_resource} < 1 ?? skipTo*7|NotEnoughCharges
+	--Ability Used *2| Recharge 2nd level Spell Slot
+	--New Total *2| [[ @{lvl2_slots_expended} + 1 ]] slots
+	--api_modattr *3|_silent _charid @{character_id} _other_resource|-1
+	--api_modattr *4|_silent _charid @{character_id} _lvl2_slots_expended|1
+	--skipTo*8|EndOfCard
+
+	--:Third|
+	--?? @{other_resource} < 1 ?? skipTo*9|NotEnoughCharges
+	--Ability Used *3| Recharge 3rd level Spell Slot
+	--New Total *3| [[ @{lvl3_slots_expended} + 1 ]] slots
+	--api_modattr *5|_silent _charid @{character_id} _other_resource|-1
+	--api_modattr *6|_silent _charid @{character_id} _lvl3_slots_expended|1
+	--skipTo*8|EndOfCard
+
+	--:Recharge|
+	--Charges Regained| 1
+	--api_setattr *7|_silent _charid @{character_id} _other_resource|1
+	--skipTo*9|EndOfCard
+
+	--NotEnoughCharges|
+	--Failure|Not Enough Charges for that Option
+
+	--:EndOfCard|
+}}

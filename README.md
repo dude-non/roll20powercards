@@ -49,7 +49,7 @@ Currently Implemented:
 
 - _Kensei Ki_ (Made for my PC Faelov, a Kensei Monk)
 
-- _Pearl of Power_ (Set to the `@{other_resource}`
+- _Pearl of Power_ (Set to the `@{other_resource}`)
 
 - _Staff of Charming_
 

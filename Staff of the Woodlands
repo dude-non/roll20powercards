@@ -1,0 +1,131 @@
+!power {{
+	--name|Staff of the Woodlands
+	--leftsub|You have +2 to Attack Rolls, Daamge, and Spell Attack Rolls.
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == AniFriend ?? skipTo*1|AniFriend
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == Awaken ?? skipTo*2|Awaken
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == Barkskin ?? skipTo*3|Barkskin
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == Locate ?? skipTo*4|Locate
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == SpeakAni ?? skipTo*5|SpeakAni
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == SpeakPlant ?? skipTo*6|SpeakPlant
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == WallofThorns ?? skipTo*7|WallofThorns
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == Pass ?? skipTo*8|Pass
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == TreeForm ?? skipTo*9|TreeForm
+			--?? ?{Select Action|Animal Friendship - 1 charge,AniFriend|Awaken - 5 charges,Awaken|Barkskin - 2 charges,Barkskin|Locate Animals or Plants - 2 charges,Locate|Speak with Animals - 1 charge,SpeakAni|Speak with Plants - 3 charges,SpeakPlant|Wall of Thorns - 6 charges,WallofThorns|Pass Without Trace - No charges,Pass|Tree Form - 1 charge,TreeForm|Recharge,Recharge} == Recharge ?? skipTo*10|Recharge
+
+	--:AniFriend|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*11|NotEnoughCharges
+	--Spell Cast| Animal Friend
+	--Effect| You convince a beast that you mean it no harm. Choose a beast that you can see within range. It must see and hear you. If the beast's Intelligence is 4 or higher, the spell fails. Otherwise, the beast must succeed on a Wisdom saving throw or be charmed by you for the spell's duration. If you or one of your companions harms the target, the spell ends.
+	--Saving Throw| @{spell_save_dc} Wis Save
+	--Range| 30 ft.
+	--Duration| 24 hours
+	--Charges Spent| 1
+	--api_modattr *1|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*12|DestructionCheck
+	--skipTo*13|EndOfCard
+
+	--:Awaken|
+	--?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*14|NotEnoughCharges
+	--Spell Cast *2| Awaken
+	--Effect *2| After spending the casting time tracing magical pathways within a precious gemstone, you touch a Huge or smaller beast or plant. The target must have either no Intelligence score or an Intelligence of 3 or less. The target gains an Intelligence of 10. The target also gains the ability to speak one language you know. If the target is a plant, it gains the ability to move its limbs, roots, vines, creepers, and so forth, and it gains senses similar to a human's. Your DM chooses statistics appropriate for the awakened plant, such as the statistics for the awakened shrub or the awakened tree. The awakened beast or plant is charmed by you for 30 days or until you or your companions do anything harmful to it. When the charmed condition ends, the awakened creature chooses whether to remain friendly to you, based on how you treated it while it was charmed.
+	--Casting Time *2| 8 hours
+	--Range *2| Touch
+	--Duration *2| 30 days
+	--Charges Spent *2| 5
+	--api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+	--?? ~ChargesOnCharacterSheet$ == 5 ?? skipTo*15|DestructionCheck
+	--skipTo*16|EndOfCard
+
+	--:Barkskin|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*17|NotEnoughCharges
+	--Spell Cast *3| Barkskin
+	--Effect *3| You touch a willing creature. Until the spell ends, the target's skin has a rough, bark-like appearance, and the target's AC can't be less than 16, regardless of what kind of armor it is wearing.
+	--Range *3| Touch
+	--Duration *3| 1 hour [Concentration]
+	--Charges Spent *3| 2
+	--api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+	--?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*18|DestructionCheck
+	--skipTo*19|EndOfCard
+
+	--:Locate|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*20|NotEnoughCharges
+	--Spell Cast *4| Locate Animals or Plants
+	--Effect *4| Describe or name a specific kind of beast or plant. Concentrating on the voice of nature in your surroundings, you learn the direction and distance to the closest creature or plant of that kind within 5 miles, if any are present.
+	--Range *4| 5 miles
+	--Charges Spent *4| 2
+	--api_modattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+	--?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*21|DestructionCheck
+	--skipTo*22|EndOfCard
+
+	--:SpeakAni|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*23|NotEnoughCharges
+	--Spell Cast *5| Speak with Animals
+	--Effect *5| You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM's discretion.
+	--Duration *5| 10 minutes
+	--Charges Spent *5| 1
+	--api_modattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*24|DestructionCheck
+	--skipTo*25|EndOfCard
+
+	--:SpeakPlant|
+	--?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*26|NotEnoughCharges
+	--Spell Cast *6| Speak with Plants
+	--Effect *6| You imbue Plants within 30 feet of you with limited sentience and animation, giving them the ability to communicate with you and follow your simple commands. You can question Plants about events in the spell's area within the past day, gaining information about creatures that have passed, weather, and other circumstances. You can also turn Difficult Terrain caused by Plant Growth (such as thickets and undergrowth) into ordinary terrain that lasts for the Duration. Or you can turn ordinary terrain where Plants are present into Difficult Terrain that lasts for the Duration, causing vines and branches to hinder pursuers, for example. Plants might be able to perform other tasks on your behalf, at the DM's discretion. The spell doesn't enable Plants to uproot themselves and move about, but they can freely move branches, tendrils, and stalks. If a plant creature is in the area, you can communicate with it as if you shared a Common language, but you gain no magical ability to Influence it. This spell can cause the Plants created by the Entangle spell to release a Restrained creature.
+	--Range *6| 30 ft. radius
+	--Duration *6| 10 minutes
+	--Charges Spent *6| 3
+	--api_modattr *6|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
+	--?? ~ChargesOnCharacterSheet$ == 3 ?? skipTo*27|DestructionCheck
+	--skipTo*28|EndOfCard
+
+	--:WallofThorns|
+	--?? ~ChargesOnCharacterSheet$ < 6 ?? skipTo*29|NotEnoughCharges
+	--Spell Cast *7| Wall of Thorns
+	--Effect *7| You create a wall of tough, pliable, tangled brush bristling with needle-sharp thorns. The wall appears within range on a solid surface and lasts for the duration. You choose to make the wall up to 60 feet long, 10 feet high, and 5 feet thick or a circle that has a 20-foot diameter and is up to 20 feet high and 5 feet thick. The wall blocks line of sight. When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes piercing damage, or half as much damage on a successful save. A creature can move through the wall, albeit slowly and painfully. For every 1 foot a creature moves through the wall, it must spend 4 feet of movement. Furthermore, the first time a creature enters the wall on a turn or ends its turn there, the creature must make a Dexterity saving throw. It takes 7d8 slashing damage on a failed save, or half as much damage on a successful one.
+	--Saving Throw *7| @{spell_save_dc} Dex Save
+	--Failed Save *7| [[ [$Damage] 7d8 ]] Piercing Damage
+	--Successful Save *7| [^Damage.halftotal] Piercing Damage
+	--Range *7| 120 ft.
+	--Duration *7| 10 minutes [Concentration]
+	--Charges Spent *7| 6
+	--api_modattr *7|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-6
+	--?? ~ChargesOnCharacterSheet$ == 6 ?? skipTo*30|DestructionCheck
+	--skipTo*31|EndOfCard
+
+	--:Pass|
+	--Spell Cast *8| Pass Without Trace
+	--Effect *8| A veil of shadows and silence radiates from you, masking you and your companions from detection. For the duration, each creature you choose within 30 feet of you (including you) has a +10 bonus to Dexterity (Stealth) checks and can't be tracked except by magical means. A creature that receives this bonus leaves behind no tracks or other traces of its passage.
+	--Range *8| 30 ft. radius
+	--Duration *8| 1 hour [Concentration]
+	--Charges Spent *8| 0
+	--skipTo*32|EndOfCard
+
+	--:TreeForm|
+	--?? ~ChargesOnCharacterSheet$ < 1 ?? skipTo*33|NotEnoughCharges
+	--Ability Used| Tree Form
+	--Effect *9| You can use an action to plant one end of the staff in fertile earth and expend 1 charge to transform the staff into a healthy tree. The tree is 60 feet tall and has a 5-foot diameter trunk, and its branches at the top spread out in a 20-foot radius. The tree appears ordinary but radiates a faint aura of transmutation magic if targeted by detect magic. While touching the tree and using another action to speak its command word, you return the staff to its normal form. Any creature in the tree falls when it reverts to a staff.
+	--Charges Spent *9| 1
+	--api_modattr *9|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-1
+	--?? ~ChargesOnCharacterSheet$ == 1 ?? skipTo*34|DestructionCheck
+	--skipTo*35|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d6 + 4 + @{repeating_resource_$0_resource_right}]] 
+	--?? $RegainedCharges >= 10 ?? api_setattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|10
+	--?? $RegainedCharges < 10 ?? api_setattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+	--Note *11|The Recharge Formula above is calculated by rolling 1d6+4, and then adding the number of charges the Staff currently has (if any). The Staff can hold a maximum of 10 charges. If the total number of charges exceeds 10, then the number of charges will be set to 10.
+	--skipTo*36|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure|Not Enough Charges for this Option.
+	--skipTo*37|EndOfCard
+
+	--:DestructionCheck|
+  	--Warning|All charges used
+  	--Destruction Check| [[ [$Dest] 1d20]]
+  	--?? $Dest > 1 ?? Safe|The Staff is out of charges, but undamaged.
+  	--?? $Dest == 1 ?? Destroyed|The Staff loses all properties and becomes a nonmagical Quarterstaff!
+
+	--:EndOfCard
+}}

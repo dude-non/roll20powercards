@@ -6,10 +6,15 @@ To add to your own game:
 First, Find and Replace all instances of `repeating_resource_$0_resource_right` with the appropriate resource slot on the sheet.
 
 The first row left box is `class_resource`
+
 The first row right box is `other_resource`
+
 The second row left box is `repeating_resource_$0_resource_left`
+
 The second row right box is `repeating_resource_$0_resource_right`
+
 The third row left box is `repeating_resource_$1_resource_left`
+
 Etc...
 
 Second, go to the Character Sheet of the entity you want to be using this item/ability. Tab to 'Attributes and Abilities.' Under Abilities, click '+Add.'

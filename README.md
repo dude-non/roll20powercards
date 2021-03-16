@@ -1,6 +1,25 @@
 # roll20powercards
 A series of Power Cards, using the template put forward by @nolivo
 
+To add to your own game: 
+
+First, Find and Replace all instances of `repeating_resource_$0_resource_right` with the appropriate resource slot on the sheet.
+
+The first row left box is `class_resource`
+The first row right box is `other_resource`
+The second row left box is `repeating_resource_$0_resource_left`
+The second row right box is `repeating_resource_$0_resource_right`
+The third row left box is `repeating_resource_$1_resource_left`
+Etc...
+
+Second, go to the Character Sheet of the entity you want to be using this item/ability. Tab to 'Attributes and Abilities.' Under Abilities, click '+Add.'
+
+This will create a new Ability Macro. Hover over it and click the pencil.
+
+Paste the code into the large text box and then type a name into the smaller text box. The name can't have spaces, but if you press space it'll fill in the '-' for you.
+
+Then to run the Macro you can click the d20 button in the Abilities tab or you can set the Macro to show up on the Macro Bar for all Players who control this Character or you can enable it as a Token Action, which only shows up when a Player who controls a Token with this Ability clicks it.
+
 Currently Implemented:
 
 - _Abracadabrus_

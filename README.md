@@ -51,6 +51,12 @@ Currently Implemented:
 
 - _Pearl of Power_ (Set to the `@{other_resource}`)
 
+- _Rod of Alertness_
+
+- _Rod of Lordly Might_
+
+- _Rod of Rulership_
+
 - _Staff of Charming_
 
 - _Staff of Fire_
@@ -61,9 +67,13 @@ Currently Implemented:
 
 - _Staff of Swarming Insects_
 
+- _Staff of the Magi_
+
 - _Staff of Withering_
 
 - _Staff of the Woodlands_
+
+- _Tentacle Rod_
 
 - _Wand of Identification_ (Custom Item for my campaign since none of my players took Identify >n< )
  

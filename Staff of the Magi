@@ -1,0 +1,280 @@
+!power {{
+	--name|Staff of the Magi
+	--leftsub|You gain Advantage on Spell Saving Throws, +2 to Staff Attack Rolls and Damage, and +2 to Spell Attacks
+	--inlinereplace|ChargesOnCharacterSheet|@{repeating_resource_$0_resource_right}
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Absorb ?? skipTo*1|Absorb
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Conjure ?? skipTo*2|Conjure
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Dispel ?? skipTo*3|Dispel
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Fireball ?? skipTo*4|Fireball
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Sphere ?? skipTo*5|Sphere
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == IceStorm ?? skipTo*6|IceStorm
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Invis ?? skipTo*7|Invis
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Knock ?? skipTo*8|Knock
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == LBolt ?? skipTo*9|LBolt
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Passwall ?? skipTo*10|Passwall
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == PlaneShift ?? skipTo*11|PlaneShift
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Telekinesis ?? skipTo*12|Telekinesis
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == WallofFire ?? skipTo*13|WallofFire
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Web ?? skipTo*14|Web
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == ArcLock ?? skipTo*15|ArcLock
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Detect ?? skipTo*16|Detect
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == EnlRed ?? skipTo*17|EnlRed
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Light ?? skipTo*18|Light
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == MageHand ?? skipTo*19|MageHand
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Protect ?? skipTo*20|Protect
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == RStrike ?? skipTo*21|RStrike
+			--?? ?{Select Action|Spell Absorption - Charges Vary,Absorb|Conjure Elemental - 7 charges,Conjure|Dispel Magic - 3 charges,Dispel|Fireball [7th lvl] - 7 charges,Fireball|Flaming Sphere - 2 charges,Sphere|Ice Storm - 4 charges,IceStorm|Invisibility - 2 charges,Invis|Knock - 2 charges,Knock|Lightning Bolt [7th lvl] - 7 charges,LBolt|Passwall - 5 charges,Passwall|Plane Shift - 7 charges,PlaneShift|Telekinesis - 5 charges,Telekinesis|Wall of Fire - 4 charges,WallofFire|Web - 2 charges,Web|Arcane Lock - No charges,ArcLock|Detect Magic - No charges,Detect|Enlarge/Reduce - No charges,EnlRed|Light - No charges,Light|Mage Hand - No Charges,MageHand|Protection from Evil and Good - No charges,Protect|Retributive Strike - All charges,RStrike|Recharge,Recharge} == Recharge ?? skipTo*22|Recharge
+
+
+	--:Absorb|
+	--Ability Used *1| Spell Absorbtion
+	--Effect *1| You can use your reaction when another creature casts a spell that targets only you. If you do, the staff absorbs the magic of the spell, canceling its effect and gaining a number of charges equal to the absorbed spell's level. However, if doing so brings the staff s total number of charges above 50, the staff explodes as if you activated its Retributive Strike.
+	--skipTo*23|EndOfCard
+
+	--:Conjure|
+	--?? ~ChargesOnCharacterSheet$ < 7 ?? skipTo*24|NotEnoughCharges
+	--Spell Cast *2| Conjure Elemental
+	--Effect *2| You call forth an elemental servant. Choose an area of air, earth, fire, or water that fills a 10-foot cube within range. An elemental of challenge rating 5 or lower appropriate to the area you chose appears in an unoccupied space within 10 feet of it. For example, a fire elemental emerges from a bonfire, and an earth elemental rises up from the ground. The elemental disappears when it drops to 0 hit points or when the spell ends. The elemental is friendly to you and your companions for the duration. Roll initiative for the elemental, which has its own turns. It obeys any verbal commands that you issue to it (no action required by you). If you don't issue any commands to the elemental, it defends itself from hostile creatures but otherwise takes no actions.
+	--Range *2| 90 ft.
+	--Duration *2| 1 hour [Concentration]
+	--Charges Spent *2| 7
+	--Note *2| If your concentration is broken, the elemental doesn't disappear. Instead, you lose control of the elemental, it becomes hostile toward you and your companions, and it might attack. An uncontrolled elemental can't be dismissed by you, and it disappears 1 hour after you summoned it. The DM has the elemental's statistics.
+	--api_modattr *2|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-7
+	--?? ~ChargesOnCharacterSheet$ == 7 ?? skipTo*25|ExhaustionCheck
+	--skipTo*26|EndOfCard
+
+	--:Dispel|
+	--?? ~ChargesOnCharacterSheet$ < 3 ?? skipTo*27|NotEnoughCharges
+	--Spell Cast *3| Dispel Magic
+	--Effect *3| Choose one creature, object, or magical effect within range. Any spell of 3rd level or lower on the target ends. For each spell of 4th level or higher on the target, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, the spell ends.
+	--Range *3| 120 ft.
+	--Charges Spent *3| 3
+	--api_modattr *3|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-3
+	--?? ~ChargesOnCharacterSheet$ == 3 ?? skipTo*28|ExhaustionCheck
+	--skipTo*29|EndOfCard
+
+	--:Fireball|
+	--?? ~ChargesOnCharacterSheet$ < 7 ?? skipTo*30|NotEnoughCharges
+	--Spell Cast *4| Fireball - 7th level
+	--Effect *4| A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. 
+	--Saving Throw *4| @{spell_save_dc} Dex Save
+	--Failed Save *4| [[ [$Damage] 12d6 ]] Fire Damage 
+	--Successful Save *4| [^Damage.halftotal] Fire Damage
+	--Range *4| 150 ft.
+	--Size *4| 20 ft. Radius Sphere
+	--Charges Spent *4| 7
+	--Note *4| The fire spreads around corners. It ignites flammable objects in the area that aren’t being worn or carried.
+	--api_modattr *4|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-7
+	--?? ~ChargesOnCharacterSheet$ == 7 ?? skipTo*31|ExhaustionCheck
+	--skipTo*32|EndOfCard 
+
+	--:Sphere|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*33|NotEnoughCharges
+	--Spell Cast *5| Flaming Sphere
+	--Effect *5| A 5-foot-diameter sphere of fire appears in an unoccupied space of your choice within range and lasts for the duration. Any creature that ends its turn within 5 feet of the sphere must make a Dexterity saving throw. As a bonus action, you can move the sphere up to 30 feet. If you ram the sphere into a creature, that creature must make the saving throw against the sphere's damage, and the sphere stops moving this turn.
+	--Saving Throw *5| @{spell_save_dc} Dex Save
+	--Failed Save *5| [[ [$Damage] 2d6 ]] Fire Damage
+	--Successful Save *5| [^Damage.halftotal] Fire Damage
+	--Range *5| 60 ft.
+	--Duration *5| 1 minute [Concentration]
+	--Charges Spent *5| 2
+	--Note *5| When you move the sphere, you can direct it over barriers up to 5 feet tall and jump it across pits up to 10 feet wide. The sphere ignites flammable objects not being worn or carried, and it sheds bright light in a 20-foot radius and dim light for an additional 20 feet.
+	--api_modattr *5|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+	--?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*34|ExhaustionCheck
+	--skipTo*35|EndOfCard
+
+	--:IceStorm|
+	--?? ~ChargesOnCharacterSheet$ < 4 skipTo*36|NotEnoughCharges
+	--Spell Cast *6| Ice Storm
+	--Effect *6| A hail of rock-hard ice pounds to the ground in a 20-foot-radius, 40-foot-high cylinder centered on a point within range. Hailstones turn the storm's area of effect into difficult terrain until the end of your next turn.
+	--Saving Throw *6| @{spell_save_dc} Dex Save
+	--Failed Save *6| [[ [$BluntDamage] 2d8 ]] Bludgeoning and [[ [$ColdDamage] 4d6 ]] Cold Damge
+	--Successful Save *6| [^BluntDamage.halftotal] Bludgeoning and [^ColdDamage.halftotal] Cold Damage
+	--Range *6| 300 ft.
+	--Charges Spent *6| 4
+	--api_modattr *6|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+	--?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*37|ExhaustionCheck
+	--skipTo*38|EndOfCard
+
+	--:Invis|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*39|NotEnoughCharges
+	--Spell Cast *7| Invisibility
+	--Effect *7| A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person. The spell ends for a target that attacks or casts a spell.
+	--Duration *7| 1 hour [Concentration]
+	--Charges Spent *7| 2
+	--api_modattr *7|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+	--?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*40|ExhaustionCheck
+	--skipTo*41|EndOfCard
+
+	--:Knock|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*42|NotEnoughCharges
+	--Spell Cast *8| Knock
+	--Effect *8| Choose an object that you can see within range. The object can be a door, a box, a chest, a set of manacles, a padlock, or another object that contains a mundane or magical means that prevents access. A target that is held shut by a mundane lock or that is stuck or barred becomes unlocked, unstuck, or unbarred. If the object has multiple locks, only one of them is unlocked. If you choose a target that is held shut with arcane lock, that spell is suppressed for 10 minutes, during which time the target can be opened and shut normally. When you cast the spell, a loud knock, audible from as far away as 300 feet, emanates from the target object.
+	--Charges Spent *8| 2
+	--api_modattr *8|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+	--?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*43|ExhaustionCheck
+	--skipTo*44|EndOfCard
+
+	--:LBolt|
+	--?? ~ChargesOnCharacterSheet$ < 7 ?? skipTo*45|NotEnoughCharges
+	--Spell Cast *9| Lightning Bolt - 7th level
+	--Effect *9| A stroke of lightning forming a line 100 feet long and 5 feet wide blasts out from you in a direction you choose.
+	--Saving Throw *9| [[ 17 ]] Dex Save
+	--Failed Save *9| [[ [$Damage] 12d6 ]] Lightning Damage 
+	--Successful Save *9| [^Damage.halftotal] Lightning Damage
+	--Charges Spent *9| 7
+	--Note *9| The lightning ignites flammable objects in the area that aren’t being worn or carried.
+	--api_modattr *9|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-7
+	--?? ~ChargesOnCharacterSheet$ == 7 ?? skipTo*46|ExhaustionCheck
+	--skipTo*47|EndOfCard 
+
+	--:Passwall|
+	--?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*48|NotEnoughCharges
+	--Spell Cast *10| Passwall
+	--Effect *10| A passage appears at a point of your choice that you can see on a wooden, plaster, or stone surface (such as a wall, a ceiling, or a floor) within range, and lasts for the duration. You choose the opening's dimensions: up to 5 feet wide, 8 feet tall, and 20 feet deep. The passage creates no instability in a structure surrounding it.
+	--Range *10| 30 ft.
+	--Duration *10| 1 hour
+	--Charges Spent *10| 5
+	--Note *10| When the opening disappears, any creatures or objects still in the passage created by the spell are safely ejected to an unoccupied space nearest to the surface on which you cast the spell.
+	--api_modattr *10|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+	--?? ~ChargesOnCharacterSheet$ == 5 ?? skipTo*49|ExhaustionCheck
+	--skipTo*50|EndOfCard 
+
+	--:PlaneShift|
+	--?? ~ChargesOnCharacterSheet$ < 7 ?? skipTo*51|NotEnoughCharges
+	--Spell Cast *11| Plane Shift
+	--Effect *11| You and up to eight willing creatures who link hands in a circle are transported to a different plane of existence. You can specify a target destination in general terms, such as the City of Brass on the Elemental Plane of Fire or the palace of Dispater on the second level of the Nine Hells, and you appear in or near that destination. If you are trying to reach the City of Brass, for example, you might arrive in its Street of Steel, before its Gate of Ashes, or looking at the city from across the Sea of Fire, at the DM's discretion. Alternatively, if you know the sigil sequence of a teleportation circle on another plane of existence, this spell can take you to that circle. If the teleportation circle is too small to hold all the creatures you transported, they appear in the closest unoccupied spaces next to the circle.
+	--Charges Spent *11| 7
+	--Note *11| You can use this spell to banish an unwilling creature to another plane. Choose a creature within your reach and make a melee spell attack against it. On a hit, the creature must make a Charisma saving throw. If the creature fails this save, it is transported to a random location on the plane of existence you specify. A creature so transported must find its own way back to your current plane of existence.
+	--Spell Attack *11| [[ 1d20 + 2 + @{spell_attack_bonus} ]]
+	--Saving Throw *11| @{spell_save_dc} Chr Save
+	--api_modattr *11|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-7
+	--?? ~ChargesOnCharacterSheet$ == 7 ?? skipTo*52|ExhaustionCheck
+	--skipTo*53|EndOfCard 
+
+	--:Telekinesis|
+	--?? ~ChargesOnCharacterSheet$ < 5 ?? skipTo*54|NotEnoughCharges
+	--Spell Cast *12| Telekinesis
+	--Effect *12| You gain the ability to move or manipulate creatures or objects by thought. When you cast the spell, and as your action each round for the duration, you can exert your will on one creature or object that you can see within range, causing the appropriate effect below. You can affect the same target round after round, or choose a new one at any time. If you switch targets, the prior target is no longer affected by the spell.
+	--Creature *12| You can try to move a Huge or smaller creature. Make an ability check with your spellcasting ability contested by the creature's Strength check. If you win the contest, you move the creature up to 30 feet in any direction, including upward but not beyond the range of this spell. Until the end of your next turn, the creature is restrained in your telekinetic grip. A creature lifted upward is suspended in mid-air. On subsequent rounds, you can use your action to attempt to maintain your telekinetic grip on the creature by repeating the contest.
+	--Contest *12| [[ 1d20 + @{spellcasting_ability} ]]
+	--Object *12| You can try to move an object that weighs up to 1,000 pounds. If the object isn't being worn or carried, you automatically move it up to 30 feet in any direction, but not beyond the range of this spell. If the object is worn or carried by a creature, you must make an ability check with your spellcasting ability contested by that creature's Strength check. If you succeed, you pull the object away from that creature and can move it up to 30 feet in any direction but not beyond the range of this spell. You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.
+	--Range *12| 60 ft.
+	--Duration *12| 10 minutes [Concentration]
+	--Charges Spent *12| 5
+	--api_modattr *12|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-5
+	--?? ~ChargesOnCharacterSheet$ == 5 ?? skipTo*55|ExhaustionCheck
+	--skipTo*56|EndOfCard 
+
+	--:WallofFire|
+	--?? ~ChargesOnCharacterSheet$ < 4 ?? skipTo*57|NotEnoughCharges
+	--Spell Cast *13| Wall of Fire
+ 	--Effect *13| You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration. When the wall appears, each creature within its area must make a Dexterity saving throw. 
+  	--Duration *13|Concentration, up to 1 minute
+  	--Saving Throw *13| @{spell_save_dc} Dex Save
+  	--Failed Save *13| [[ [$WallOfFireCold] 5d8 ]] Fire Damage 
+  	--Successful Save *13| [^WallOfFireCold.halftotal] Fire Damage 
+  	--Charges Spent *13| 4
+  	--Note *13|  One side of the wall, selected by you when you cast this spell, deals [[ 5d8 ]] fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage. 
+  	--api_modattr *13|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-4
+  	--?? ~ChargesOnCharacterSheet$ == 4 ?? skipTo*58|ExhaustionCheck
+  	--skipTo*59|EndOfCard  
+
+	--:Web|
+	--?? ~ChargesOnCharacterSheet$ < 2 ?? skipTo*60|NotEnoughCharges
+	--Spell Cast *14| Web
+	--Effect *14| You conjure a mass of thick, sticky webbing at a point of your choice within range. The webs fill a 20-foot cube from that point for the duration. The webs are difficult terrain and lightly obscure their area. If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself, and the spell ends at the start of your next turn. Webs layered over a flat surface have a depth of 5 feet. Each creature that starts its turn in the webs or that enters them during its turn must make a Dexterity saving throw. On a failed save, the creature is restrained as long as it remains in the webs or until it breaks free. A creature restrained by the webs can use its action to make a Strength check against your spell save DC. If it succeeds, it is no longer restrained. The webs are flammable. Any 5-foot cube of webs exposed to fire burns away in 1 round, dealing 2d4 fire damage to any creature that starts its turn in the fire.
+	--Saving Throw *14| @{spell_save_dc} Dex Save
+	--Range *14| 60 ft.
+	--Duration *14| 1 hour [Concentration]
+	--Charges Spent *14| 2
+  	--api_modattr *14|_silent _charid @{character_id} _repeating_resource_$0_resource_right|-2
+  	--?? ~ChargesOnCharacterSheet$ == 2 ?? skipTo*58|ExhaustionCheck
+  	--skipTo*59|EndOfCard  
+
+	--:ArcLock|
+	--Spell Cast *15| Arcane Lock
+	--Effect *15| You touch a closed door, window, gate, chest, or other entryway, and it becomes locked for the duration. You and the creatures you designate when you cast this spell can open the object normally. You can also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting knock on the object suppresses arcane lock for 10 minutes. While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases by 10.
+	--Duration *15| Until Dispelled
+	--Charges Spent *15| 0
+	--skipTo*60|EndOfCard
+
+	--:Detect|
+	--Spell Cast *16| Detect Magic
+	--Effect *16| For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any. The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+	--Range *16| 30 ft. radius
+	--Duration *16| 10 minutes [Concentration]
+	--Charges Spent *16| 0
+	--skipTo*61|EndOfCard
+
+	--:EnlRed|
+	--Spell Cast *17| Enlarge/Reduce
+	--Effect *17| You cause a creature or an object you can see within range to grow larger or smaller for the duration. Choose either a creature or an object that is neither worn nor carried. If the target is unwilling, it can make a Constitution saving throw. On a success, the spell has no effect. If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.
+	--Saving Throw *17| @{spell_save_dc} Con Save
+	--Enlarge| The target's size doubles in all dimensions, and its weight is multiplied by eight. This growth increases its size by one category—from Medium to Large, for example. If there isn't enough room for the target to double its size, the creature or object attains the maximum possible size in the space available. Until the spell ends, the target also has advantage on Strength checks and Strength saving throws. The target's weapons also grow to match its new size. While these weapons are enlarged, the target's attacks with them deal 1d4 extra damage.
+	--Reduce| The target's size is halved in all dimensions, and its weight is reduced to one-eighth of normal. This reduction decreases its size by one category—from Medium to Small, for example. Until the spell ends, the target also has disadvantage on Strength checks and Strength saving throws. The target's weapons also shrink to match its new size. While these weapons are reduced, the target's attacks with them deal 1d4 less damage (this can't reduce the damage below 1).
+	--Range *17| 30 ft.
+	--Duration *17| 1 minute [Concentration]
+	--Charges Spent *17| 0
+	--skipTo*62|EndOfCard
+
+	--:Light|
+	--Spell Cast *18| Light
+	--Effect *18| You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds bright light in a 20-foot radius and dim light for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or dismiss it as an action. If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity saving throw to avoid the spell.
+	--Saving Throw *18| @{spell_save_dc} Dex Save
+	--Duration *18| 1 hour
+	--Charges Spent *18| 0
+	--skipTo*63|EndOfCard
+
+	--:MageHand|
+	--Spell Cast *19| Mage Hand
+	--Effect *19| A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again. You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it. The hand can't attack, activate magic items, or carry more than 10 pounds.
+	--Range *19| 30 ft.
+	--Duration *19| 1 minute
+	--Charges Spent *19| 0
+	--skipTo*64|EndOfCard
+
+	--:Protect|
+	--Spell Cast *20| Protection from Evil and Good
+	--Effect *20| Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead. The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.
+	--Duration *20| 10 minutes [Concentraion]
+	--Charges Spent *20| 0
+	--skipTo*65|EndOfCard
+
+	--:RStrike| 
+	--Ability Used *21| Retributive Strike
+	--Effect *21| You can use an action to break the staff over your knee or against a solid surface, performing a retributive strike. The staff is destroyed and releases its remaining magic in an explosion that expands to fill a 30-foot-radius sphere centered on it. You have a 50 percent chance to instantly travel to a random plane of existence, avoiding the explosion.
+	--Saving Throw *21| 17 Dex Save
+	--Charges Spent *21| $ChargesOnCharacterSheet
+	--?? [[ [$Flip] 1d2 ]] == 1 ?? Avoid|Success!
+	--?? $Flip == 2 ?? Self Damage| [[ 16 * ~ChargesOnCharacterSheet$ ]] Force Damage
+	-- 10 ft. Damage| [[ 8 * ~ChargesOnCharacterSheet$ ]] Force Damage
+	-- 20 ft. Damage| [[ 6 * ~ChargesOnCharacterSheet$ ]] Force Damage
+	-- 30 ft. Damage| [[ 4 * ~ChargesOnCharacterSheet$ ]] Force Damage
+	--skipTo*66|EndOfCard
+
+	--:Recharge|
+	--Recharge Formula|[[ [XPND] [$RegainedCharges] 4d6 + 2 + @{repeating_resource_$0_resource_right}]] 
+	--?? $RegainedCharges >= 50 ?? api_setattr *22|_silent _charid @{character_id} _repeating_resource_$0_resource_right|50
+	--?? $RegainedCharges < 50 ?? api_setattr *23|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+	--Note *11|The Recharge Formula above is calculated by rolling 4d6+2, and then adding the number of charges the Staff currently has (if any). The Staff can hold a maximum of 50 charges. If the total number of charges exceeds 50, then the number of charges will be set to 50.
+	--skipTo*67|EndOfCard
+
+	--:NotEnoughCharges|
+	--Failure| Not enough charges for this option.
+	--skipTo*68|EndOfCard
+
+	--:ExhaustionCheck|
+  	--Warning|All charges used
+  	--Exhaustion Check| [[ [$Dest] 1d20]] 
+  	--?? $Dest < 20 ?? Failure| Staff is Out of Charges.
+  	--?? $Dest == 20 ?? skipTo*69|CriticalRecharge
+  	--skipTo*70|EndOfCard
+
+  	--:CriticalRecharge|
+  	--Succcess| Critical Recharge!
+  	--Recharge Formula|[[ [XPND] [$RegainedCharges] 1d12 + 1 + @{repeating_resource_$0_resource_right}]] 
+  	--apisetattr *24|_silent _charid @{character_id} _repeating_resource_$0_resource_right|[^RegainedCharges]
+
+	--:EndOfCard|
+}}

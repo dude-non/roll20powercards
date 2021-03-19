@@ -1,0 +1,40 @@
+!power {{
+	--name|Rod of Alertness
+			--?? ?{Select Action|Detect Evil and Good,DetectEnG|Detect Magic,DetectM|Detect Poison and Disease,DetectPnD|See Invisibility,SeeInvis|Protective Aura - 1 per day,Aura} == DetectEnG ?? skipTo*1|DetectEnG
+			--?? ?{Select Action|Detect Evil and Good,DetectEnG|Detect Magic,DetectM|Detect Poison and Disease,DetectPnD|See Invisibility,SeeInvis|Protective Aura - 1 per day,Aura} == DetectM ?? skipTo*2|DetectM
+			--?? ?{Select Action|Detect Evil and Good,DetectEnG|Detect Magic,DetectM|Detect Poison and Disease,DetectPnD|See Invisibility,SeeInvis|Protective Aura - 1 per day,Aura} == DetectPnD ?? skipTo*3|DetectPnD
+			--?? ?{Select Action|Detect Evil and Good,DetectEnG|Detect Magic,DetectM|Detect Poison and Disease,DetectPnD|See Invisibility,SeeInvis|Protective Aura - 1 per day,Aura} == SeeInvis ?? skipTo*4|SeeInvis
+			--?? ?{Select Action|Detect Evil and Good,DetectEnG|Detect Magic,DetectM|Detect Poison and Disease,DetectPnD|See Invisibility,SeeInvis|Protective Aura - 1 per day,Aura} == Aura ?? skipTo*5|Aura
+
+	--:DetectEnG|
+	--Spell Cast *1| Detect Evil and Good
+	--Effect *1| For the duration, you know if there is an aberration, celestial, elemental, fey, fiend, or undead within 30 feet of you, as well as where the creature is located. Similarly, you know if there is a place or object within 30 feet of you that has been magically consecrated or desecrated.
+	--Duration *1| 10 minutes [Concentration]
+	--Note *1|The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+	--skipTo*6|EndOfCard
+
+	--:DetectM|
+	--Spell Cast *2| Detect Magic
+	--Effect *2| For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any.
+	--Duration *2| 10 minutes [Concentration]
+	--Note *2| The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+	--skipTo*7|EndOfCard
+
+	--:DetectPnD
+	--Spell Cast *3| Detect Poison and Disease
+	--Effect *3| For the duration, you can sense the presence and location of poisons, poisonous creatures, and diseases within 30 feet of you. You also identify the kind of poison, poisonous creature, or disease in each case.
+	--Duration *3| 10 minutes [Concentration]
+	--Note *3| The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.
+	--skipTo*8|EndOfCard
+
+	--:SeeInvis|
+	--Spell Cast *4| See Invisibility
+	--Effect *4| For the duration, you see invisible creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.
+	--Duration *4| 1 hour
+	--skipTo*9|EndOfCard
+
+	--:Aura|
+	--Ability Used| Protective Aura
+	--Effect *5| You plant the haft end of the rod in the ground, whereupon the rod's head sheds bright light in a 60-foot radius and dim light for an additional 60 feet. While in that bright light, you and any creature that is friendly to you gain a +1 bonus to AC and saving throws and can sense the location of any invisible hostile creature that is also in the bright light.
+	--Duration *5| 10 minutes or until removed
+}}

@@ -1,0 +1,9 @@
+!power {{
+	--name|Rod of Rulership
+
+	--Ability Used| Charm Crowd
+	--Saving Throw| 15 Wis Save
+	--Range| 120 ft
+	--Duration| 8 hours
+	--Effect| While charmed in this way, the creature regards you as its trusted leader. If harmed by you or your companions, or commanded to do something contrary to its nature, a target ceases to be charmed in this way. 
+}}

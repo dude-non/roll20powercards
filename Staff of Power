@@ -163,7 +163,7 @@
 	--skipTo*45|EndOfCard
 
 	--:NotEnoughCharges|
-	--Failure| Not enough charges to Inspire Wonder.
+	--Failure| Not enough charges for this option.
 	--skipTo*46|EndOfCard
 
 	--:DestructionCheck|

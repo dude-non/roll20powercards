@@ -1,0 +1,69 @@
+!power {{
+	--name|Rod of Lordly Might
+	--leftsub|You have +3 to Attack and Damage Rolls with this Weapon
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == One ?? skipTo*1|One
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Two ?? skipTo*2|Two
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Three ?? skipTo*3|Three
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Four ?? skipTo*4|Four
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Five ?? skipTo*5|Five
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Six ?? skipTo*6|Six
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Drain ?? skipTo*7|Drain
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Paralyze ?? skipTo*8|Paralyze
+			--?? ?{Select Action|Button 1,One|Button 2,Two|Button 3,Three|Button 4,Four|Button 5,Five|Button 6,Six|Drain Life - 1 per day,Drain|Paralyze - 1 per day,Paralyze|Terrify - 1 per day,Terrify} == Terrify ?? skipTo*9|Terrify
+
+	--:One|
+	--Button Pressed *1| 1
+	--Effect *1| The rod becomes a flame tongue, as a fiery blade sprouts from the end opposite the rod's flanged head. (You choose the type of sword)
+	--Choices| Shortsword (1d6) / Longsword (1d8) / Greatsword (2d6)
+	--Bonus Damage| 2d6 Fire Damage
+	--skipTo*10|EndOfCard
+
+	--:Two|
+	--Button Pressed *2| 2
+	--Effect *2| The rod's flanged head folds down and two crescent-shaped blades spring out, transforming the rod into a magic battleaxe that grants a +3 bonus to attack and damage rolls made with it.
+	--New Damage *2| 1d8/1d10 Slashing (Versatile)
+	--skipTo*11|EndOfCard
+
+	--:Three|
+	--Button Pressed *3| 3
+	--Effect *3| The rod's flanged head folds down, a spear point springs from the rod's tip, and the rod's handle lengthens into a 6-foot haft, transforming the rod into a magic spear that grants a +3 bonus to attack and damage rolls made with it.
+	--New Damage *3| 1d6/1d8 Piercing (Versatile)
+	--skipTo*12|EndOfCard
+
+	--:Four|
+	--Button Pressed *4| 4
+	--Effect *4| The rod transforms into a climbing pole up to 50 feet long, as you specify. In surfaces as hard as granite, a spike at the bottom and three hooks at the top anchor the pole. Horizontal bars 3 inches long fold out from the sides, 1 foot apart, forming a ladder. The pole can bear up to 4,000 pounds. More weight or lack of solid anchoring causes the rod to revert to its normal form.
+	--skipTo*13|EndOfCard
+
+	--:Five|
+	--Button Pressed *5| 5
+	--Effect *5| The rod transforms into a handheld battering ram and grants its user a +10 bonus to Strength checks made to break through doors, barricades, and other barriers.
+	--skipTo*14|EndOfCard
+
+	--:Six|
+	--Button Pressed *6| 6
+	--Effect *6| The rod assumes or remains in its normal form and indicates magnetic north. (Nothing happens if this function of the rod is used in a location that has no magnetic north.) The rod also gives you knowledge of your approximate depth beneath the ground or your height above it.
+	--skipTo*15|EndOfCard
+
+	--:Drain|
+	--Ability Used *7| Drain Life
+	--Saving Throw *7| 17 Con Save
+	--Failed Save *7| [[ [$Damage] 4d6]] Necrotic Damage
+	--Healing *7| [^Damage.halftotal] Hit Points
+	--skipTo*16|EndOfCard
+
+	--:Paralyze|
+	--Ability Used *8| Paralyze
+	--Saving Throw *8| 17 Str Save
+	--Effect *8| The target is Paralyized; the target can repeat the saving throw at the end of each of its turns, ending the effect on a success.
+	--Duration *8| 1 minute
+	--skipTo*17|EndOfCard
+
+	--:Terrify|
+	--Ability Used *9| Terrify
+	--Saving Throw *9| 17 Wis Save
+	--Effect *9| The target is Frightened of you; a frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+	--Duration *9| 1 minute
+
+	--:EndOfCard|
+}}
